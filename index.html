@@ -2,856 +2,541 @@
 <html lang="lt">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#5B3A63">
-<title>ŠALIA Onko – artimojo navigatorius</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b6570">
+<title>NursePlan LT V5</title>
 <style>
-:root{--cream:#FFF9F4;--paper:#fff;--plum:#5B3A63;--plum2:#7C5A84;--coral:#DA7A6D;--peach:#F6C7B9;--sage:#AEB9A3;--gold:#D8AC63;--ink:#2D2930;--muted:#817581;--line:#EADFD8;--soft:#F7EFEA;--shadow:0 14px 34px rgba(77,51,84,.09)}
-*{box-sizing:border-box}html,body{margin:0;background:#F6EEE9;color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.app{max-width:560px;margin:auto;min-height:100vh;background:var(--cream);padding-bottom:92px}.hero{padding:22px 18px 26px;color:#fff;background:radial-gradient(circle at 88% 12%,rgba(246,199,185,.45),transparent 32%),linear-gradient(145deg,#4F3158,#6E486F);border-radius:0 0 30px 30px}.brand{display:flex;align-items:center;gap:10px}.logo{width:38px;height:38px;position:relative}.logo:before,.logo:after{content:"";position:absolute;width:23px;height:32px;border-radius:20px 20px 8px 8px;top:2px}.logo:before{left:4px;background:#F28F7E;transform:rotate(-35deg)}.logo:after{right:4px;background:#7D3E70;transform:rotate(35deg);opacity:.92}.brand h1{margin:0;font-size:22px}.hero p{margin:12px 0 0;font-size:14px;line-height:1.5;opacity:.9}main{padding:15px}.screen{display:none}.screen.active{display:block}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:15px;margin-bottom:13px;box-shadow:var(--shadow)}.card h2{margin:0 0 7px;font-size:20px;color:var(--plum)}.card h3{margin:0 0 8px;font-size:15px;color:var(--plum)}.small{font-size:12px;line-height:1.48;color:var(--muted)}.rolegrid{display:grid;gap:11px;margin-top:12px}.role{border:0;border-left:6px solid var(--peach);background:#fff;border-radius:17px;padding:13px;text-align:left;display:grid;grid-template-columns:72px 1fr 24px;align-items:center;gap:10px;box-shadow:0 6px 18px rgba(85,56,91,.06)}.role:nth-child(2){border-left-color:var(--gold)}.role:nth-child(3){border-left-color:var(--sage)}.role.sel{outline:3px solid rgba(91,58,99,.2);background:#FFF7F4}.role strong{display:block;color:var(--plum);font-size:15px}.role span{font-size:11px;color:var(--muted);line-height:1.4}.pic{height:62px;border-radius:16px;background:linear-gradient(145deg,#FFF0E9,#F8E5E0);display:flex;align-items:center;justify-content:center;font-size:32px}.chev{font-size:22px;color:var(--plum)}.btn{width:100%;border:0;border-radius:14px;padding:12px 14px;background:var(--coral);color:#fff;font-weight:800;font-size:14px}.btn.secondary{background:#EEE3EF;color:var(--plum)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{border:1px solid var(--line);border-radius:17px;background:#fff;padding:10px;text-align:left;min-height:118px;box-shadow:0 5px 15px rgba(85,56,91,.04)}.tile .art{height:55px;border-radius:13px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:30px;background:#FFF0EA}.tile strong{font-size:13px;color:var(--plum)}.tile span{display:block;font-size:10px;color:var(--muted);margin-top:3px}.notice{background:linear-gradient(135deg,#FFF0EA,#FFF9F5);border:1px solid #EFCFC4;border-radius:17px;padding:12px;font-size:12px;line-height:1.5}.route{padding-left:31px;position:relative}.route:before{content:"";position:absolute;left:11px;top:4px;bottom:4px;width:3px;background:linear-gradient(var(--coral),var(--gold),var(--sage));border-radius:3px}.stop{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:11px}.stop:before{content:"";position:absolute;width:13px;height:13px;border:4px solid var(--coral);background:var(--cream);border-radius:50%;left:-27px;top:17px}.stop h4{margin:0 0 4px;color:var(--plum);font-size:14px}.stop p{margin:0;font-size:12px;color:var(--muted)}.info-list{display:grid;gap:8px}.info-item{border:1px solid var(--line);border-radius:15px;padding:11px;background:#fff}.info-item strong{display:block;color:var(--plum);font-size:13px}.info-item span{font-size:11px;color:var(--muted)}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);display:grid;grid-template-columns:repeat(5,1fr);background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:7px 6px 10px;backdrop-filter:blur(12px)}.bottom button{border:0;background:transparent;color:var(--muted);font-size:10px;padding:6px 2px;border-radius:11px}.bottom button b{display:block;font-size:17px}.bottom button.active{background:#F1E7F2;color:var(--plum)}label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}select,input{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px;font:inherit;color:var(--ink)}.backlink{border:0;background:transparent;color:var(--plum);font-weight:800;padding:0 0 10px}.stagehero{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center}.stagehero .ill{height:76px;border-radius:18px;background:linear-gradient(145deg,#FFECE4,#F7E4DF);display:flex;align-items:center;justify-content:center;font-size:38px}.flow{display:flex;gap:6px;overflow:auto;padding:6px 0 2px}.pill{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:7px 9px;background:#fff;font-size:10px;color:var(--muted)}.pill.active{background:#F2E7F3;color:var(--plum);font-weight:800}.accord{border:1px solid var(--line);border-radius:16px;background:#fff;margin:9px 0;overflow:hidden}.accord summary{cursor:pointer;list-style:none;padding:13px;display:grid;grid-template-columns:42px 1fr 18px;gap:9px;align-items:center}.accord summary::-webkit-details-marker{display:none}.ico{width:42px;height:42px;border-radius:13px;background:#FFF0EA;display:flex;align-items:center;justify-content:center;font-size:22px}.accord summary strong{display:block;color:var(--plum);font-size:14px}.accord summary span{font-size:11px;color:var(--muted)}.accord .body{border-top:1px solid var(--line);padding:12px}.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fact{border:1px solid var(--line);border-radius:13px;padding:9px;background:#FFFCFA}.fact b{display:block;color:var(--plum);font-size:11px;margin-bottom:3px}.fact span{font-size:11px;line-height:1.4;color:var(--muted)}.check{display:grid;gap:8px;margin-top:8px}.check div{display:flex;gap:8px;font-size:12px;line-height:1.45}.contact{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:10px;margin:8px 0;background:#fff}.contact b{font-size:13px;color:var(--plum)}.contact small{display:block;color:var(--muted)}.call{padding:8px 11px;border-radius:10px;background:#EEE3EF;color:var(--plum);text-decoration:none;font-size:12px;font-weight:800}.rights{display:grid;gap:8px}.right{border-left:4px solid var(--sage);background:#fff;border-radius:13px;padding:10px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.right b{color:var(--plum);font-size:12px}.right p{margin:4px 0 0;font-size:11px;line-height:1.45;color:var(--muted)}.source a{color:var(--plum);font-weight:700;text-decoration:none}.warn{background:#FFF5E3;border:1px solid #EED8AE;border-radius:14px;padding:10px;font-size:11px;line-height:1.45}.progress{height:8px;background:#EEE4DE;border-radius:999px;overflow:hidden;margin:9px 0 5px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--coral),var(--gold));width:0}.states{display:flex;gap:5px;margin-top:9px}.states button{flex:1;border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px;font-size:11px}.states button.sel[data-v="done"]{background:#E9F1E5}.states button.sel[data-v="know"]{background:#F0E7F1}.states button.sel[data-v="unknown"]{background:#FFF1D7}
-@media(max-width:390px){.facts{grid-template-columns:1fr}.role{grid-template-columns:62px 1fr 18px}.grid{grid-template-columns:1fr 1fr}}
+:root{
+  --bg:#f3f7f8; --card:#ffffff; --ink:#173238; --muted:#688087; --line:#dce7e9;
+  --pri:#0b6570; --pri2:#0d7884; --pri3:#e9f5f5; --blue:#edf5fb; --gold:#fff7e7;
+  --danger:#a34545; --shadow:0 10px 28px rgba(27,66,73,.08); --shadow2:0 3px 12px rgba(27,66,73,.06);
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{touch-action:manipulation}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:auto;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.4px}
+.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(145deg,var(--pri),#1493a1);color:#fff;display:grid;place-items:center;font-size:13px;box-shadow:0 5px 14px rgba(11,101,112,.24)}
+.brand-name{font-size:20px}.brand-name span{color:var(--pri)}
+.demo-badge{font-size:11px;font-weight:800;color:var(--pri);background:var(--pri3);border:1px solid #cfe7e8;border-radius:999px;padding:6px 9px}
+main{max-width:1180px;margin:auto;padding:18px 14px 78px}
+.hero{background:
+ radial-gradient(circle at 88% 18%,rgba(20,147,161,.15),transparent 27%),
+ linear-gradient(135deg,#e5f2f3 0%,#ffffff 66%);
+ border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:center}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:var(--pri);font-weight:900;margin-bottom:8px}
+.hero h1{font-size:34px;line-height:1.05;letter-spacing:-1px;margin:0 0 10px;max-width:690px}
+.hero p{margin:0;color:var(--muted);line-height:1.6;max-width:720px}
+.hero-visual{min-height:160px;display:grid;place-items:center}
+.flow-card{width:100%;background:rgba(255,255,255,.82);border:1px solid rgba(183,213,216,.8);border-radius:18px;padding:14px;box-shadow:var(--shadow2)}
+.flow-node{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line);margin:7px 0}
+.flow-num{width:26px;height:26px;border-radius:8px;background:var(--pri3);color:var(--pri);display:grid;place-items:center;font-weight:900;font-size:12px}
+.flow-text{font-size:12px;font-weight:800}.flow-sub{font-size:10px;color:var(--muted);font-weight:600}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:850;cursor:pointer;transition:.15s}
+.btn-primary{background:var(--pri);color:#fff}.btn-primary:hover{background:var(--pri2);transform:translateY(-1px)}
+.btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn-soft{background:var(--pri3);color:var(--pri)}
+.stats{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.stat{font-size:11px;font-weight:850;color:#49666c;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 9px}
+.notice{margin-top:14px;background:var(--gold);border:1px solid #ecdcae;border-radius:12px;padding:10px 12px;font-size:12px;line-height:1.45;color:#705822}
+
+.shell{margin-top:16px;display:grid;grid-template-columns:220px 1fr;gap:14px}
+.sidebar{position:sticky;top:70px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:var(--shadow2)}
+.step{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;color:#6a7f85;font-size:12px;font-weight:800}
+.step .n{width:25px;height:25px;border-radius:8px;background:#edf1f2;display:grid;place-items:center;font-size:11px}
+.step.on{background:var(--pri3);color:var(--pri)}.step.on .n{background:var(--pri);color:#fff}
+.content{min-width:0}
+.pathbar{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:10px;box-shadow:var(--shadow2);font-size:12px;color:var(--muted)}
+.pathbar b{color:var(--ink)}
+.section-title{font-size:23px;font-weight:900;letter-spacing:-.45px;margin:5px 0 6px}.section-sub{font-size:13px;color:var(--muted);margin:0 0 13px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:11px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:15px;box-shadow:var(--shadow2)}
+.click{cursor:pointer;transition:.16s}.click:hover{transform:translateY(-2px);border-color:#b7d3d6;box-shadow:var(--shadow)}
+.specialty-card{min-height:145px;position:relative;overflow:hidden}
+.specialty-card:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;background:var(--pri3);right:-28px;bottom:-35px}
+.iconbox{width:42px;height:42px;border-radius:13px;background:var(--pri3);color:var(--pri);display:grid;place-items:center;font-weight:950;margin-bottom:15px}
+.card h3{font-size:17px;margin:0 0 7px;line-height:1.25}.meta{font-size:12px;color:var(--muted);line-height:1.45}
+.code{display:inline-block;font-size:13px;font-weight:950;color:var(--pri);background:var(--pri3);padding:6px 8px;border-radius:9px;margin-bottom:9px}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.chip{font-size:10px;font-weight:800;background:#f4f7f8;color:#577177;border:1px solid var(--line);border-radius:999px;padding:5px 7px}
+.toolbar{display:grid;grid-template-columns:1fr 240px;gap:9px;margin-bottom:11px}
+.search,select,input[type=text],textarea{width:100%;border:1px solid var(--line);border-radius:13px;background:#fff;padding:12px 13px;color:var(--ink);outline:none}
+.search:focus,select:focus,input[type=text]:focus,textarea:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112,.08)}
+textarea{min-height:90px;resize:vertical}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+
+.checkrow,.actionrow{display:flex;gap:10px;align-items:flex-start}
+.checkrow input,.actionrow input{width:19px;height:19px;margin-top:2px;accent-color:var(--pri);flex:0 0 auto}
+.checkrow label{font-weight:850;line-height:1.35}.problem-card{margin-bottom:10px}
+.actionrow{padding:9px 10px;background:#fbfdfd;border-radius:11px;margin:8px 0}.actionrow label{font-size:13px;line-height:1.45}
+.editor{margin-bottom:12px}.editor h3{margin:0 0 10px}.field-label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.45px;font-weight:900;color:#476269;margin:12px 0 6px}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:900;background:var(--blue);color:#245b78;padding:5px 8px;border-radius:999px;margin-bottom:8px}
+.callout{background:#f7fbfb;border:1px solid #d7e9ea;border-radius:13px;padding:12px;font-size:12px;color:#536d73;line-height:1.45;margin-bottom:11px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.hidden{display:none!important}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}.tab{background:#edf1f2;color:#546d73}.tab.on{background:var(--pri);color:#fff}
+.output{white-space:pre-wrap;background:#fbfdfd;border:1px dashed #a9c9cc;border-radius:14px;padding:16px;line-height:1.6;font-size:14px}
+.output-card{border-top:4px solid var(--pri)}
+.footer{font-size:11px;color:var(--muted);line-height:1.5;margin-top:18px}
+.quick-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;margin-top:10px}
+.quick{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer}.quick b{font-size:12px}.quick span{display:block;font-size:10px;color:var(--muted);margin-top:3px}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}
+.small-head{font-weight:900;font-size:14px;margin-bottom:5px}
+.about-list{margin:0;padding-left:18px;color:#536e74;font-size:13px;line-height:1.65}
+.progress-mobile{display:none;height:4px;background:#dfe9ea;position:sticky;top:57px;z-index:45}.progress-mobile span{display:block;height:100%;background:var(--pri);width:14.28%;transition:.2s}
+
+@media(max-width:880px){
+ .hero-grid{grid-template-columns:1fr}.hero-visual{display:none}.shell{grid-template-columns:1fr}.sidebar{display:none}.pathbar{display:block}.progress-mobile{display:block}
+ .hero h1{font-size:29px}
+}
+@media(max-width:640px){
+ main{padding:12px 10px 70px}.hero{padding:18px;border-radius:20px}.hero h1{font-size:25px}.grid{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}
+ .btnrow .btn{flex:1 1 auto}.section-title{font-size:20px}.brand-name{font-size:18px}
+}
+@media print{
+ .topbar,.hero,.sidebar,.progress-mobile,.pathbar,.btnrow,.tabs{display:none!important}
+ body{background:#fff}.shell{display:block}.content{width:100%}.card{border:0;box-shadow:none}.output-card{border-top:0}
+}
 </style>
-<!-- SALIA_ONKO_BUILD: 2026-10-05-routing-fix -->
 </head>
 <body>
-<div class="app">
-<header class="hero"><div class="brand"><div class="logo"></div><h1>ŠALIA Onko</h1></div><p>Artimojo navigatorius. Mažiau blaškymosi, daugiau aiškumo: kas vyksta, ką galima gauti, kur kreiptis ir ką daryti toliau.</p></header>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><div class="logo">NP</div><div class="brand-name">Nurse<span>Plan</span> LT</div></div>
+    <div class="demo-badge">V5 • DEMO</div>
+  </div>
+</div>
+<div class="progress-mobile"><span id="mprogress"></span></div>
+
 <main>
-<section id="start" class="screen active">
-<div class="card"><h2>Kur dabar yra jūsų artimas žmogus?</h2><div class="small">Pasirinkite situaciją. Pirmasis etapas jau išplėstas į konkretų artimojo navigatorių.</div><div class="rolegrid">
-<button class="role" data-stage-start="suspected"><div class="pic">🧑‍⚕️</div><div><strong>Įtariama onkologinė liga</strong><span>Laukia tyrimų, biopsijos, histologijos ar atsakymo.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="confirmed"><div class="pic">📋</div><div><strong>Diagnozė patvirtinta</strong><span>Dar tik dėliojamas gydymo planas arba laukiama konsiliumo.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="treatment"><div class="pic">🏥</div><div><strong>Vyksta aktyvus gydymas</strong><span>Operacija, chemoterapija, imunoterapija, radioterapija ar kitas gydymas.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="follow"><div class="pic">🕒</div><div><strong>Gydymas baigtas / stebėjimas</strong><span>Kontroliniai tyrimai, vizitai ir grįžimas į kasdienybę.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="progression"><div class="pic">📈</div><div><strong>Liga progresuoja / gydymas keičiamas</strong><span>Naujas etapas, nauji sprendimai ir daug nežinomybės.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="palliative"><div class="pic">🤝</div><div><strong>Paliatyvioji priežiūra</strong><span>Simptomų kontrolė, slauga, pagalba namuose ir atokvėpis artimajam.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="endoflife"><div class="pic">🕯️</div><div><strong>Gyvenimo pabaigos priežiūra</strong><span>Praktiniai klausimai, komfortas, pagalba namuose ir artimojo palaikymas.</span></div><div class="chev">›</div></button>
-<button class="role" data-stage-start="bereavement"><div class="pic">🤍</div><div><strong>Artimo žmogaus netekau</strong><span>Gedėjimas, dokumentai, praktiniai žingsniai ir pagalba sau.</span></div><div class="chev">›</div></button>
-</div></div><div class="notice"><strong>ŠALIA Onko</strong> nėra paciento gydymo programėlė. Ji skirta žmogui, kuris eina šalia – padeda, veža, koordinuoja ir dažnai pats lieka be aiškaus kelio.</div>
-</section>
-
-<section id="suspected" class="screen">
-<button class="backlink" data-screen="start">← Grįžti</button>
-<div class="card"><div class="stagehero"><div class="ill">🧑‍🤝‍🧑</div><div><h2>Įtariama onkologinė liga</h2><div class="small">Kas vyksta toliau jūsų artimojo kelyje – kur, kiek maždaug laukti, kam skambinti ir ką galite padaryti jūs.</div></div></div><div class="flow"><div class="pill active">Įtarimas</div><div class="pill">Specialistas</div><div class="pill">Tyrimai / biopsija</div><div class="pill">Histologija</div><div class="pill">Tolimesnis planas</div></div></div>
-
-<div class="card"><h3>Kas gali priklausyti šiame etape?</h3><div class="small">Ne viskas suteikiama automatiškai – dalis priklauso nuo siuntimo, diagnozės, įstaigos ir konkrečios situacijos.</div><div class="rights" style="margin-top:10px">
-<div class="right"><b>✓ E. siuntimas ir specialisto konsultacija</b><p>Jei gydytojas pagrįstai įtaria onkologinę ligą, pacientas siunčiamas tolimesniam ištyrimui.</p></div>
-<div class="right"><b>✓ „Žaliojo koridoriaus“ / prioriteto principas</b><p>Pirmą kartą įtariamos onkologinės ligos atveju specializuotoje įstaigoje gali būti taikomas greitesnis kelias. Registruojantis verta tai aiškiai pasakyti.</p></div>
-<div class="right"><b>✓ Onkologijos atvejo vadyba</b><p>Specializuotoje onkologinę pagalbą teikiančioje įstaigoje gali būti paskirtas atvejo vadybininkas, padedantis koordinuoti konsultacijas ir tyrimus.</p></div>
-<div class="right"><b>✓ Galimybė rinktis gydymo įstaigą</b><p>Turint tinkamą siuntimą galima ieškoti ankstesnio laiko ir kitoje PSDF sutartį turinčioje įstaigoje.</p></div>
-<div class="right"><b>✓ Informacija ir dalyvavimas sprendimuose</b><p>Pacientui turi būti paaiškintas tyrimų planas. Artimajam medicininė informacija teikiama tiek, kiek leidžia pats pacientas ir konfidencialumo taisyklės.</p></div>
-</div></div>
-
-<div class="card"><h3>Kas po ko?</h3>
-<details class="accord" open><summary><div class="ico">🩺</div><div><strong>1. Gydytojas įtarė onkologinę ligą</strong><span>Siuntimas ir registracija</span></div><div>⌄</div></summary><div class="body"><div class="facts"><div class="fact"><b>📍 Kur?</b><span>Šeimos gydytojas arba specialistas išrašo siuntimą ir nurodo, kur tęsti ištyrimą.</span></div><div class="fact"><b>⏱ Kiek laukti?</b><span>Vieno termino visoms ligoms nėra. Pirmoji konsultacija dažnai planuojama per keliolika dienų, bet priklauso nuo įstaigos ir įtarimo.</span></div><div class="fact"><b>📞 Kam skambinti?</b><span>Registratūrai arba siuntime nurodytai įstaigai.</span></div><div class="fact"><b>⚡ Kaip paspartinti?</b><span>Pasakykite, kad siuntimas yra dėl pirmą kartą įtariamos onkologinės ligos. Paklauskite apie žaliąjį koridorių ir atvejo vadybą.</span></div></div><div class="check"><div>✓ Patikrinkite, ar e. siuntimas jau galioja.</div><div>✓ Užsirašykite, į kokį specialistą ir kokioje įstaigoje kreiptis.</div></div></div></details>
-<details class="accord"><summary><div class="ico">👨‍⚕️</div><div><strong>2. Konsultacija pas specialistą</strong><span>Įvertinami turimi tyrimai ir sudaromas planas</span></div><div>⌄</div></summary><div class="body"><div class="facts"><div class="fact"><b>📍 Kur?</b><span>Specializuotoje gydymo įstaigoje arba atitinkamos srities specialisto konsultacijoje.</span></div><div class="fact"><b>⏱ Kiek laukti?</b><span>Pagal paskirtą vizitą. Jei terminas ilgas, galima ieškoti kitos įstaigos.</span></div><div class="fact"><b>📞 Kam skambinti?</b><span>Registratūrai arba paskirtam atvejo vadybininkui.</span></div><div class="fact"><b>⚡ Kaip paspartinti?</b><span>Paprašykite įtraukti į atsilaisvinusių laikų sąrašą ir patikrinkite ankstesnius laikus kitose įstaigose.</span></div></div><div class="warn" style="margin-top:9px"><b>Prieš išeinant verta žinoti:</b> koks kitas tyrimas, kada ir kur jis bus atliekamas, kas užregistruos ir kas praneš atsakymą.</div></div></details>
-<details class="accord"><summary><div class="ico">🧪</div><div><strong>3. Tyrimai ir / arba biopsija</strong><span>Tikslinama liga ir imamas audinio mėginys, jei reikia</span></div><div>⌄</div></summary><div class="body"><div class="facts"><div class="fact"><b>📍 Kur?</b><span>Priklauso nuo ligos: radiologijoje, endoskopijoje, urologijoje, chirurgijoje ar kitame profilyje.</span></div><div class="fact"><b>⏱ Kiek laukti?</b><span>Nuo kelių dienų iki kelių savaičių – priklauso nuo tyrimo rūšies ir eilės.</span></div><div class="fact"><b>📞 Kam skambinti?</b><span>Tyrimą atliekančiam skyriui, registratūrai arba atvejo vadybininkui.</span></div><div class="fact"><b>⚡ Kaip paspartinti?</b><span>Paklauskite dėl atsilaisvinusių laikų, kitos PSDF sutartį turinčios įstaigos ir ar visi būtini tyrimai jau suplanuoti.</span></div></div><div class="check"><div>✓ Turėkite artimojo vaistų ir alergijų sąrašą.</div><div>✓ Patikrinkite, ar tyrimui reikia nevalgyti, nutraukti tam tikrus vaistus ar atlikti kraujo tyrimus.</div></div></div></details>
-<details class="accord"><summary><div class="ico">🔬</div><div><strong>4. Laukiama histologijos atsakymo</strong><span>Mėginį tiria patologijos laboratorija</span></div><div>⌄</div></summary><div class="body"><div class="facts"><div class="fact"><b>📍 Kur?</b><span>Patologijos laboratorijoje. Artimajam dažniausiai papildomai niekur vykti nereikia.</span></div><div class="fact"><b>⏱ Kiek laukti?</b><span>Dažnai apie 2 savaites. Kokybės rodikliuose siekiama, kad 80 % tyrimų būtų atlikti greičiau nei per 14 d., 95 % – greičiau nei per 28 d. Sudėtingi atvejai gali užtrukti ilgiau.</span></div><div class="fact"><b>📞 Kam skambinti?</b><span>Gydymo įstaigai ir pasitikslinti, kas praneš galutinį atsakymą.</span></div><div class="fact"><b>⚡ Ar galima pagreitinti?</b><span>Ne visada. Jei atliekama imunohistochemija ar molekuliniai tyrimai, jų praleisti negalima. Tačiau galima pasitikslinti, ar mėginys gautas ir kokiame etape tyrimas.</span></div></div><div class="warn" style="margin-top:9px"><b>Jei praėjo 14 dienų ir atsakymo nėra:</b> paklauskite, ar tyrimas baigtas, ar atliekami papildomi tyrimai ir kada planuojama galutinė išvada.</div></div></details>
-<details class="accord"><summary><div class="ico">🗂️</div><div><strong>5. Gautas atsakymas – kas toliau?</strong><span>Kelias išsišakoja pagal rezultatą</span></div><div>⌄</div></summary><div class="body"><div class="info-list"><div class="info-item"><strong>Jei onkologinė liga nepatvirtinta</strong><span>Gydytojas paaiškina, kas nustatyta ir ar reikalingas tolesnis stebėjimas ar kiti tyrimai.</span></div><div class="info-item"><strong>Jei diagnozė patvirtinta</strong><span>Dažnai dar vertinamas ligos išplitimas, gali būti skiriami papildomi tyrimai, o tada sudaromas gydymo planas / aptariama daugiadalykėje komandoje.</span></div></div><button class="btn" style="margin-top:10px" data-stage-start="confirmed">Pereiti į „Diagnozė patvirtinta“</button></div></details>
-</div>
-
-<div class="card"><h3>Ką galite padaryti jūs, kaip artimasis?</h3><div class="check"><div>✅ Patikrinkite, ar yra galiojantis siuntimas.</div><div>✅ Padėkite užsirašyti klausimus konsultacijai.</div><div>✅ Turėkite vaistų, alergijų ir ankstesnių tyrimų sąrašą.</div><div>✅ Pasižymėkite: kas, kur ir kada turi vykti toliau.</div><div>✅ Jei atsakymas vėluoja – padėkite susisiekti su įstaiga.</div><div>✅ Paklauskite artimojo, ar jis sutinka, kad gydytojai informaciją aptartų ir su jumis.</div></div></div>
-
-<div class="card"><h3>Svarbūs numeriai</h3><div class="contact"><div><b>112 – skubi pagalba</b><small>Jei būklė staiga sunki ar kyla grėsmė gyvybei.</small></div><a class="call" href="tel:112">Skambinti</a></div><div class="contact"><div><b>113 – medicininė konsultacija</b><small>Kai nežinote, ar reikia skubios pagalbos.</small></div><a class="call" href="tel:113">Skambinti</a></div><div class="contact"><div><b>Ligonių kasa</b><small>+370 5 232 2222</small></div><a class="call" href="tel:+37052322222">Skambinti</a></div><div class="contact"><div><b>POLA</b><small>+370 620 74646</small></div><a class="call" href="tel:+37062074646">Skambinti</a></div><div class="warn">Jei artimojo būklė staiga blogėja – nelaukite planinio vizito ir skambinkite 112.</div></div>
-
-<div class="card"><h3>Ko paklausti šiame etape?</h3><div class="info-list">
-<div class="info-item"><strong>„Koks dabar artimiausias žingsnis?“</strong><span>Kad neišeitumėte nežinodami, kas vyksta toliau.</span></div>
-<div class="info-item"><strong>„Kas ir kada užregistruos kitam tyrimui?“</strong><span>Ar registruos gydymo įstaiga, atvejo vadybininkas, ar reikia registruotis patiems?</span></div>
-<div class="info-item"><strong>„Kur vyks tyrimas ir kaip jam pasiruošti?“</strong><span>Ar reikia nevalgyti, koreguoti vaistus, atlikti kraujo tyrimus ar atsivežti ankstesnius vaizdus?</span></div>
-<div class="info-item"><strong>„Kiek maždaug reikės laukti?“</strong><span>Paprašykite ne tik datos, bet ir orientacinio termino.</span></div>
-<div class="info-item"><strong>„Kas ir kaip praneš atsakymą?“</strong><span>Gydytojas, skyrius, atvejo vadybininkas ar registratūra?</span></div>
-<div class="info-item"><strong>„Kam skambinti, jei niekas nesusisiekia?“</strong><span>Turėkite konkretų atsarginį kontaktą.</span></div>
-<div class="info-item"><strong>„Ar artimajam taikomas žaliasis koridorius / atvejo vadyba?“</strong><span>Ypač jei onkologinė liga įtariama pirmą kartą.</span></div>
-<div class="info-item"><strong>„Ar galima gauti ankstesnį laiką kitoje gydymo įstaigoje?“</strong><span>Jei laukimas ilgas, verta paklausti apie kitą PSDF sutartį turinčią įstaigą.</span></div>
-</div></div>
-
-<div class="card source"><h3>Oficialūs šaltiniai</h3><div class="small">Informaciją prieš viešą naudojimą būtina periodiškai peržiūrėti ir atnaujinti.</div><div class="check"><div>↗ <a href="https://ligoniukasa.lrv.lt/lt/naujienos/onkologinemis-ligomis-susirgusiems-pacientams-zalieji-koridoriai/" target="_blank" rel="noopener">Ligonių kasa – žalieji koridoriai</a></div><div>↗ <a href="https://ligoniukasa.lrv.lt/lt/paslaugos/e-paslaugos/kur-ir-kiek-reikia-laukti-norint-gauti-sveikatos-prieziuros-paslaugas/" target="_blank" rel="noopener">Ligonių kasa – laukimo eilės</a></div><div>↗ <a href="https://sam.lrv.lt/" target="_blank" rel="noopener">Sveikatos apsaugos ministerija</a></div><div>↗ <a href="https://pola.lt/" target="_blank" rel="noopener">POLA</a></div></div><div class="small" style="margin-top:9px">Turinio peržiūros data: 2026-10-05.</div></div>
-</section>
-
-
-<section id="confirmed" class="screen">
-<button class="backlink" data-screen="start">← Grįžti</button>
-
-<div class="card">
-  <div class="stagehero">
-    <div class="ill">📋</div>
-    <div>
-      <h2>Diagnozė patvirtinta</h2>
-      <div class="small">Dabar svarbiausia suprasti, kas tikslinama prieš gydymą, kada bus daugiadalykės komandos sprendimas ir kada realiai prasidės pirmasis gydymo etapas.</div>
-    </div>
-  </div>
-  <div class="flow">
-    <div class="pill active">Diagnozė</div>
-    <div class="pill">Išplitimo tyrimai</div>
-    <div class="pill">Konsiliumas / DGS</div>
-    <div class="pill">Gydymo planas</div>
-    <div class="pill">Gydymo pradžia</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kas gali priklausyti šiame etape?</h3>
-  <div class="rights">
-    <div class="right"><b>✓ Daugiadalykės specialistų komandos sprendimas</b><p>Pirmą kartą patvirtinus onkologinę ligą diagnostikos ir gydymo taktiką planuoja daugiadalykė komanda. Priklausomai nuo situacijos joje dalyvauja kelių specialybių gydytojai.</p></div>
-    <div class="right"><b>✓ Tolimesnė onkologijos atvejo vadyba</b><p>Atvejo vadybininkas gali koordinuoti papildomus tyrimus, konsultacijas ir padėti užtikrinti, kad paskirtas gydymas prasidėtų laiku.</p></div>
-    <div class="right"><b>✓ Aiškus diagnostikos ir gydymo planas</b><p>Pacientui turi būti paaiškinta, kokių tyrimų dar reikia, koks siūlomas gydymas ir kokia jo seka.</p></div>
-    <div class="right"><b>✓ Medicinos psichologo pagalba, kai jos reikia</b><p>Specializuotoje onkologinėje pagalboje prireikus gali būti organizuojama medicinos psichologo konsultacija.</p></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kas po ko?</h3>
-
-  <details class="accord" open>
-    <summary><div class="ico">🧾</div><div><strong>1. Aptariamas galutinis patologijos atsakymas</strong><span>Kas tiksliai nustatyta?</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Pas gydantį specialistą arba specializuotoje onkologinėje įstaigoje.</span></div>
-        <div class="fact"><b>⏱ Kiek laukti?</b><span>Atsakymo aptarimo laikas priklauso nuo įstaigos. Svarbu iš karto žinoti, kas ir kada jį paaiškins.</span></div>
-        <div class="fact"><b>📞 Kam skambinti?</b><span>Gydančiam skyriui, registratūrai arba atvejo vadybininkui.</span></div>
-        <div class="fact"><b>⚡ Kaip paspartinti?</b><span>Pasitikrinkite, ar galutinė patologijos išvada jau patvirtinta ir ar nereikia papildomų žymenų ar molekulinių tyrimų.</span></div>
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Slaugos klinikinio mąstymo ir dokumentavimo vedlys</div>
+        <h1>Diagnozė → operacija → individualus slaugos planas</h1>
+        <p>Pasirinkite specialybę, TLK-10-AM diagnozės grupę ir realiai atliktą procedūrą. NursePlan LT pateikia struktūruotus vertinimo klausimus, galimas slaugos problemų kryptis, tikslus, veiksmus ir paciento mokymą.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="startFlow()">Kurti planą</button>
+          <button class="btn btn-secondary" onclick="showGeneralModules()">Bendrieji moduliai</button>
+          <button class="btn btn-soft" onclick="showAbout()">Apie prototipą</button>
+        </div>
+        <div class="stats">
+          <span class="stat" id="dxStat"></span>
+          <span class="stat" id="procStat"></span>
+          <span class="stat">Chirurgija + urologija</span>
+          <span class="stat">Kopijavimas / PDF</span>
+        </div>
       </div>
-      <div class="check">
-        <div>✓ Užsirašykite naviko tipą ir kitus gydytojo įvardytus svarbius požymius.</div>
-        <div>✓ Paklauskite, ar diagnozei / gydymui dar reikia papildomų patologinių ar genetinių tyrimų.</div>
+      <div class="hero-visual">
+        <div class="flow-card">
+          <div class="flow-node"><div class="flow-num">1</div><div><div class="flow-text">TLK-10-AM diagnozė</div><div class="flow-sub">pvz. K81 • cholecistitas</div></div></div>
+          <div class="flow-node"><div class="flow-num">2</div><div><div class="flow-text">Operacija / procedūra</div><div class="flow-sub">pvz. laparoskopinė cholecistektomija</div></div></div>
+          <div class="flow-node"><div class="flow-num">3</div><div><div class="flow-text">Slaugos planas</div><div class="flow-sub">vertinimas • tikslai • veiksmai • mokymas</div></div></div>
+        </div>
       </div>
     </div>
-  </details>
+    <div class="notice"><b>Mokomasis demonstracinis prototipas.</b> Nenaudokite realių paciento identifikacinių duomenų. TLK kodas nėra automatinis operacijos paskyrimas. Galutinį planą individualizuoja slaugytoja pagal realią paciento būklę ir įstaigos tvarką.</div>
+  </section>
 
-  <details class="accord">
-    <summary><div class="ico">🩻</div><div><strong>2. Tikslinamas ligos išplitimas</strong><span>KT, MRT, PET/KT ar kiti tyrimai – tik jei jie reikalingi konkrečiai ligai</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Radiologijos, branduolinės medicinos, endoskopijos ar kituose padaliniuose – pagal naviko tipą.</span></div>
-        <div class="fact"><b>⏱ Kiek laukti?</b><span>Terminai priklauso nuo tyrimo ir įstaigos. Svarbiausia, kad visi reikalingi tyrimai būtų įtraukti į bendrą planą.</span></div>
-        <div class="fact"><b>📞 Kam skambinti?</b><span>Atvejo vadybininkui arba konkretaus tyrimo registratūrai.</span></div>
-        <div class="fact"><b>⚡ Kaip paspartinti?</b><span>Paklauskite, ar visi tyrimai jau užsakyti, ar galima ankstesnė vieta ir ar dalį tyrimų galima atlikti kitoje PSDF sutartį turinčioje įstaigoje.</span></div>
-      </div>
-      <div class="warn" style="margin-top:9px"><b>Kodėl dar negydo?</b> Patvirtinus vėžį dažnai dar reikia nustatyti jo išplitimą. Tai padeda parinkti tinkamą gydymo seką.</div>
-    </div>
-  </details>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="step on" id="st1"><div class="n">1</div><span>Specialybė</span></div>
+      <div class="step" id="st2"><div class="n">2</div><span>TLK diagnozė</span></div>
+      <div class="step" id="st3"><div class="n">3</div><span>Operacija</span></div>
+      <div class="step" id="st4"><div class="n">4</div><span>Įvertinimas</span></div>
+      <div class="step" id="st5"><div class="n">5</div><span>Problemos</span></div>
+      <div class="step" id="st6"><div class="n">6</div><span>Planas</span></div>
+      <div class="step" id="st7"><div class="n">7</div><span>Eksportas</span></div>
+    </aside>
 
-  <details class="accord">
-    <summary><div class="ico">👥</div><div><strong>3. Daugiadalykės komandos / konsiliumo aptarimas</strong><span>Keli specialistai parenka gydymo taktiką</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Specializuotoje onkologinę pagalbą teikiančioje įstaigoje.</span></div>
-        <div class="fact"><b>⏱ Kiek laukti?</b><span>Komandos aptarimas planuojamas gavus diagnozei ir taktikai reikalingus duomenis.</span></div>
-        <div class="fact"><b>👤 Ar pacientas dalyvauja?</b><span>Dažniausiai aptariami medicininiai duomenys, o sprendimą pacientui vėliau paaiškina gydytojas. Tvarka gali skirtis.</span></div>
-        <div class="fact"><b>📞 Kam skambinti?</b><span>Gydančiam specialistui arba atvejo vadybininkui ir paklausti, kada bus žinomas sprendimas.</span></div>
-      </div>
-      <div class="check">
-        <div>✓ Paklauskite, kada vyks aptarimas.</div>
-        <div>✓ Sužinokite, kas ir kada praneš komandos sprendimą.</div>
-      </div>
-    </div>
-  </details>
+    <div class="content">
+      <div class="pathbar" id="pathbar">Pradėkite nuo specialybės pasirinkimo.</div>
 
-  <details class="accord">
-    <summary><div class="ico">🗺️</div><div><strong>4. Sudaromas gydymo planas</strong><span>Kas bus pirmiausia ir kodėl?</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="info-list">
-        <div class="info-item"><strong>Operacija</strong><span>Jei chirurginis gydymas yra tinkamiausias pirmasis etapas.</span></div>
-        <div class="info-item"><strong>Sisteminis gydymas</strong><span>Chemoterapija, imunoterapija, taikinių ar hormoninis gydymas – pagal ligą.</span></div>
-        <div class="info-item"><strong>Spindulinis gydymas</strong><span>Gali būti pirmasis etapas arba derinamas su kitais gydymo būdais.</span></div>
-        <div class="info-item"><strong>Kelių metodų derinys</strong><span>Gydymo seka priklauso nuo naviko tipo, stadijos ir bendros paciento būklės.</span></div>
-      </div>
-      <div class="warn" style="margin-top:9px">Svarbiausia ne pats gydymo pavadinimas, o <b>gydymo tikslas, seka ir pirmojo etapo data</b>.</div>
-    </div>
-  </details>
+      <section id="screen1">
+        <div class="section-title">Pasirinkite specialybę</div>
+        <p class="section-sub">Pirmajame MVP išsamiausiai vystomi du klinikiniai paketai.</p>
+        <div class="grid" id="specialtyGrid"></div>
 
-  <details class="accord">
-    <summary><div class="ico">📅</div><div><strong>5. Laukiama gydymo pradžios</strong><span>Kada turėtų prasidėti pirmasis gydymo etapas?</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>⏱ Siektinas rodiklis</b><span>Pagal Lietuvos onkologinių paslaugų prieinamumo rodiklius nuo diagnozės patvirtinimo iki pirmojo gydymo etapo pradžios siekiama ne daugiau kaip 14 kalendorinių dienų.</span></div>
-        <div class="fact"><b>⚠️ Ką tai reiškia?</b><span>Tai sistemos siektinas prieinamumo rodiklis, o ne pažadas, kad kiekvieno žmogaus gydymas būtinai prasidės lygiai per 14 dienų.</span></div>
-        <div class="fact"><b>📞 Jei data neaiški?</b><span>Skambinkite gydančiam skyriui arba atvejo vadybininkui ir klauskite, ar gydymo planas jau patvirtintas bei kas dar laukia.</span></div>
-        <div class="fact"><b>⚡ Kaip padėti?</b><span>Patikrinkite, ar atlikti visi prieš gydymą būtini tyrimai ir ar pacientui paskirta konkreti gydymo pradžios data.</span></div>
-      </div>
-    </div>
-  </details>
-</div>
+        <div class="section-title" style="font-size:17px;margin-top:22px">Greitas demonstravimas</div>
+        <p class="section-sub">Vienu paspaudimu atidarykite paruoštą klinikinį kelią.</p>
+        <div class="quick-list">
+          <div class="quick" onclick="quickStart('K81','Laparoskopinė cholecistektomija')"><b>K81 → Cholecistektomija</b><span>Chirurgija</span></div>
+          <div class="quick" onclick="quickStart('K35','Laparoskopinė apendektomija')"><b>K35 → Apendektomija</b><span>Chirurgija</span></div>
+          <div class="quick" onclick="quickStart('C67','TURBT / TURB')"><b>C67 → TURBT</b><span>Urologija</span></div>
+          <div class="quick" onclick="quickStart('N20','URS')"><b>N20 → URS</b><span>Urologija</span></div>
+        </div>
+      </section>
 
-<div class="card">
-  <h3>Ką dabar turi žinoti artimasis?</h3>
-  <div class="check">
-    <div>✅ Koks gydymo tikslas: išgydyti, sumažinti ligą, kontroliuoti ar palengvinti simptomus?</div>
-    <div>✅ Kas bus pirmasis gydymo etapas?</div>
-    <div>✅ Kada ir kur jis prasidės?</div>
-    <div>✅ Kiek maždaug truks visas pirmasis etapas?</div>
-    <div>✅ Kokio šalutinio poveikio tikėtis ir ką stebėti namuose?</div>
-    <div>✅ Kam skambinti darbo metu ir po darbo valandų?</div>
-    <div>✅ Ką reikia susiorganizuoti: transportą, lydėjimą, vaistus, maistą, darbą / nedarbingumą?</div>
-  </div>
-</div>
+      <section id="screen2" class="hidden">
+        <div class="section-title" id="dxTitle"></div>
+        <p class="section-sub">Ieškokite pagal TLK kodą arba diagnozės pavadinimą.</p>
+        <div class="toolbar">
+          <input class="search" id="dxSearch" placeholder="Pvz. K81, cholecistitas, C50..." oninput="renderDiagnoses()">
+          <select id="dxGroup" onchange="renderDiagnoses()"></select>
+        </div>
+        <div class="grid" id="dxGrid"></div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(1)">Atgal</button></div>
+      </section>
 
-<div class="card">
-  <h3>Ko paklausti šiame etape?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>„Ar jau nustatytas ligos išplitimas / stadija?“</strong><span>Jei ne – kokių tyrimų dar trūksta?</span></div>
-    <div class="info-item"><strong>„Kada atvejis bus aptartas daugiadalykėje komandoje?“</strong><span>Ir kas praneš sprendimą?</span></div>
-    <div class="info-item"><strong>„Koks gydymo tikslas ir kodėl siūloma būtent tokia seka?“</strong><span>Kas bus pirmiausia?</span></div>
-    <div class="info-item"><strong>„Kada planuojama gydymo pradžia?“</strong><span>Ar jau yra konkreti data?</span></div>
-    <div class="info-item"><strong>„Ar prieš gydymą dar reikia tyrimų ar konsultacijų?“</strong><span>Kas juos užregistruos?</span></div>
-    <div class="info-item"><strong>„Kokie simptomai reiškia, kad reikia kreiptis anksčiau?“</strong><span>Kur skambinti darbo metu ir naktį / savaitgalį?</span></div>
-    <div class="info-item"><strong>„Kas yra mūsų pagrindinis kontaktinis žmogus?“</strong><span>Gydytojas, skyrius ar atvejo vadybininkas?</span></div>
-  </div>
-</div>
+      <section id="screen3" class="hidden">
+        <div class="section-title" id="procTitle"></div>
+        <p class="section-sub">Pasirinkite realiai atliktą ar planuojamą operaciją / procedūrą. Diagnozė pati operacijos nenustato.</p>
+        <div class="grid" id="procGrid"></div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(2)">Atgal</button></div>
+      </section>
 
-<div class="card source">
-  <h3>Oficialūs šaltiniai</h3>
-  <div class="check">
-    <div>↗ <a href="https://e-seimas.lrs.lt/rs/legalact/TAD/90762081ef5611edb649a2a873fdbdfd/" target="_blank" rel="noopener">Onkologinių pacientų srautų valdymo ir atvejo vadybos reikalavimai</a></div>
-    <div>↗ <a href="https://ligoniukasa.lrv.lt/lt/naujienos/onkologinemis-ligomis-susirgusiems-pacientams-zalieji-koridoriai/" target="_blank" rel="noopener">Ligonių kasa – žaliasis koridorius ir atvejo vadyba</a></div>
-    <div>↗ <a href="https://sam.lrv.lt/public/canonical/1748936873/27779/Onkologijos%20klasterio%20kokyb%C4%97s%20rodikliai%20%28V.%20Pe%C4%8Deli%C5%ABnas%29.pdf" target="_blank" rel="noopener">SAM – onkologijos klasterio kokybės ir prieinamumo rodikliai</a></div>
-  </div>
-  <div class="small" style="margin-top:9px">Turinio peržiūros data: 2026-10-05.</div>
-</div>
-</section>
+      <section id="screen4" class="hidden">
+        <div class="section-title" id="assessTitle"></div>
+        <p class="section-sub">Pažymėkite aktualius vertinimo punktus. Tai padeda pagrįsti, kodėl pasirenkamos konkrečios slaugos problemos.</p>
+        <div class="card" id="assessmentList"></div>
+        <div class="card">
+          <span class="field-label">Papildomas individualus vertinimas</span>
+          <textarea id="customAssessment" placeholder="Pvz. pacientas orientuotas, vaikšto savarankiškai, skausmas didėja kosint..."></textarea>
+        </div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(3)">Atgal</button><button class="btn btn-primary" onclick="go(5)">Toliau</button></div>
+      </section>
 
+      <section id="screen5" class="hidden">
+        <div class="section-title" id="problemTitle"></div>
+        <p class="section-sub">Pasirinkite tik tas problemų kryptis, kurios atitinka konkretaus paciento būklę. Tai nėra oficiali NANDA-I duomenų bazė.</p>
+        <div id="problemList"></div>
+        <div class="card">
+          <div class="tag">INDIVIDUALIZAVIMAS</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input type="text" id="customProblem" style="flex:1;min-width:220px" placeholder="+ įrašyti savo slaugos problemą">
+            <button class="btn btn-soft" onclick="addCustomProblem()">Pridėti</button>
+          </div>
+        </div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(4)">Atgal</button><button class="btn btn-primary" onclick="prepareEditors()">Toliau</button></div>
+      </section>
 
-<section id="treatment" class="screen">
-<button class="backlink" data-screen="start">← Grįžti</button>
+      <section id="screen6" class="hidden">
+        <div class="section-title">Individualizuokite planą</div>
+        <p class="section-sub">Visas siūlomas tekstas redaguojamas. Galutinį klinikinį sprendimą priima slaugytoja.</p>
+        <div class="card">
+          <span class="field-label">Trumpi paciento faktai be identifikacinių duomenų</span>
+          <textarea id="patientFacts" placeholder="Pvz. 1 para po operacijos, NRS 4/10, pykinimo nėra, žaizda sausa, mobilizuojasi su pagalba..."></textarea>
+        </div>
+        <div id="editors"></div>
+        <div class="card">
+          <div class="tag">PACIENTO MOKYMAS</div>
+          <div id="educationList"></div>
+          <span class="field-label">+ Papildoma rekomendacija</span>
+          <textarea id="extraEducation" placeholder="Įrašykite savo rekomendaciją..."></textarea>
+        </div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(5)">Atgal</button><button class="btn btn-primary" onclick="generateOutputs()">Generuoti</button></div>
+      </section>
 
-<div class="card">
-  <div class="stagehero">
-    <div class="ill">🏥</div>
-    <div>
-      <h2>Vyksta aktyvus gydymas</h2>
-      <div class="small">Šiame etape artimajam svarbiausia žinoti gydymo kalendorių, kokių reakcijų tikėtis, kam skambinti tarp vizitų ir kada nelaukti.</div>
-    </div>
-  </div>
-  <div class="flow">
-    <div class="pill active">Gydymo planas</div>
-    <div class="pill">Gydymo diena</div>
-    <div class="pill">Namai</div>
-    <div class="pill">Šalutiniai poveikiai</div>
-    <div class="pill">Kitas ciklas / vizitas</div>
-  </div>
-</div>
+      <section id="screen7" class="hidden">
+        <div class="section-title">Parengtas dokumentavimo tekstas</div>
+        <p class="section-sub">Pasirinkite, kokio formato teksto reikia.</p>
+        <div class="tabs">
+          <button id="tabPlan" class="btn tab on" onclick="showOutput('plan')">Pilnas slaugos planas</button>
+          <button id="tabNote" class="btn tab" onclick="showOutput('note')">Trumpas įrašas</button>
+          <button id="tabEdu" class="btn tab" onclick="showOutput('edu')">Paciento mokymas</button>
+        </div>
+        <div class="card output-card">
+          <div id="planOutput" class="output"></div>
+          <div class="btnrow">
+            <button class="btn btn-primary" onclick="copyOutput()">Kopijuoti</button>
+            <button class="btn btn-secondary" onclick="window.print()">Spausdinti / PDF</button>
+            <button class="btn btn-soft" onclick="downloadTxt()">Išsaugoti TXT</button>
+          </div>
+        </div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(6)">Redaguoti</button><button class="btn btn-secondary" onclick="resetAll()">Naujas planas</button></div>
+      </section>
 
-<div class="card">
-  <h3>Kas gali priklausyti šiame etape?</h3>
-  <div class="rights">
-    <div class="right"><b>✓ Pacientų pavėžėjimas į onkologinį gydymą</b><p>Pacientams, kuriems taikoma chemoterapija, radioterapija, imunoterapija, taikinių terapija ar paliatyvusis onkologinis gydymas, gali būti organizuojamas valstybės lygmens pavėžėjimas. Registracija ir konsultacijos – <b>1808</b>. Galutinę teisę gauti paslaugą patikrina operatorius.</p></div>
-    <div class="right"><b>✓ Gydymo planas ir konkretus kontaktas</b><p>Pacientui turi būti aišku, koks gydymas taikomas, kada numatytas kitas vizitas ir į ką kreiptis dėl šalutinių poveikių.</p></div>
-    <div class="right"><b>✓ Kontroliniai tyrimai pagal gydymo planą</b><p>Prieš dalį gydymo ciklų gali būti atliekami kraujo ar kiti tyrimai, kad būtų įvertinta, ar gydymą saugu tęsti.</p></div>
-    <div class="right"><b>✓ Simptomų ir šalutinių poveikių gydymas</b><p>Pykinimo, skausmo, infekcijos rizikos ar kitų šalutinių poveikių valdymas yra gydymo dalis. Vaistus vartokite tik taip, kaip paskyrė gydymo komanda.</p></div>
-    <div class="right"><b>✓ Psichologinė ir socialinė pagalba, kai jos reikia</b><p>Artimasis gali padėti paklausti dėl medicinos psichologo, socialinio darbuotojo, transporto ir kitų praktinių paslaugų.</p></div>
-  </div>
-</div>
+      <section id="generalModules" class="hidden">
+        <div class="section-title">Bendrieji chirurginės slaugos moduliai</div>
+        <p class="section-sub">Šiuos modulius vėliau galima jungti prie bet kurios specialybės ar operacijos.</p>
+        <div class="module-grid">
+          <div class="card"><div class="iconbox">Ž</div><div class="small-head">Pooperacinė žaizda</div><div class="meta">Žaizdos vertinimas, infekcijos rizika, tvarsčiai, paciento mokymas.</div></div>
+          <div class="card"><div class="iconbox">D</div><div class="small-head">Drenai</div><div class="meta">Fiksacija, išskyrų pobūdis ir kiekis, infekcijos ir kraujavimo stebėjimas.</div></div>
+          <div class="card"><div class="iconbox">S</div><div class="small-head">Stoma</div><div class="meta">Stomos būklė, peristominė oda, savipriežiūra, skysčių balansas.</div></div>
+          <div class="card"><div class="iconbox">M</div><div class="small-head">MARSI</div><div class="meta">Odos rizikos vertinimas, lipnių priemonių parinkimas, saugus nuėmimas ir dokumentavimas.</div></div>
+          <div class="card"><div class="iconbox">K</div><div class="small-head">Kateteriai</div><div class="meta">Foley, cistostoma, nefrostoma ir kitos drenavimo sistemos.</div></div>
+          <div class="card"><div class="iconbox">SB</div><div class="small-head">SBAR perdavimas</div><div class="meta">Vėlesniame etape – automatinis struktūruotas paciento perdavimo juodraštis.</div></div>
+        </div>
+        <div class="btnrow"><button class="btn btn-primary" onclick="startFlow()">Kurti planą</button><button class="btn btn-secondary" onclick="goHome()">Į pradžią</button></div>
+      </section>
 
-<div class="card">
-  <h3>Koks gydymas taikomas jūsų artimajam?</h3>
-  <div class="small">Paspauskite aktualią gydymo rūšį. Konkretų grafiką visada nustato gydymo komanda.</div>
+      <section id="aboutSection" class="hidden">
+        <div class="section-title">Apie NursePlan LT prototipą</div>
+        <div class="card">
+          <div class="tag">PRODUKTO KRYPTIS</div>
+          <ul class="about-list">
+            <li>TLK-10-AM naudojamas diagnozės paieškai ir klinikiniam keliui pradėti.</li>
+            <li>Operacija / procedūra pasirenkama atskirai, nes vienas TLK kodas savaime nenustato gydymo.</li>
+            <li>Slaugos problemos pateikiamos kaip siūlomos kryptys, o ne kaip automatinė diagnozė.</li>
+            <li>Nenaudojami paciento vardas, asmens kodas ar ligos istorijos numeris.</li>
+            <li>Prieš realų klinikinį naudojimą reikalinga turinio ekspertizė, validacija, duomenų apsaugos ir medicinos priemonės reguliacinė analizė.</li>
+            <li>ACHI procedūrų skaitmeniniai kodai į demo sąmoningai nedėti, kol nėra integruotas oficialus aktualus klasifikatorius.</li>
+          </ul>
+        </div>
+        <div class="btnrow"><button class="btn btn-primary" onclick="startFlow()">Kurti planą</button><button class="btn btn-secondary" onclick="goHome()">Į pradžią</button></div>
+      </section>
 
-  <details class="accord" open>
-    <summary><div class="ico">🛏️</div><div><strong>Operacija</strong><span>Prieš operaciją → stacionaras / dienos chirurgija → atsistatymas</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Chirurgijos skyriuje, dienos chirurgijoje ar specializuotame centre – pagal operacijos pobūdį.</span></div>
-        <div class="fact"><b>⏱ Kiek trunka?</b><span>Stacionaro ir atsistatymo trukmė labai priklauso nuo operacijos. Išrašant paprašykite konkretaus plano.</span></div>
-        <div class="fact"><b>🏠 Ką stebėti namuose?</b><span>Žaizdą, temperatūrą, skausmą, kraujavimą, šlapinimąsi / tuštinimąsi, kvėpavimą ir bendrą būklę – pagal operacijos tipą.</span></div>
-        <div class="fact"><b>📞 Kam skambinti?</b><span>Išraše nurodytam skyriui ar gydytojui. Gyvybei pavojingos būklės atveju – 112.</span></div>
-      </div>
-      <div class="check">
-        <div>✓ Artimasis turėtų turėti išrašą, vaistų sąrašą ir žinoti kontrolinio vizito datą.</div>
-        <div>✓ Išrašant paklauskite, kada galima valgyti, praustis, judėti, vairuoti ir grįžti prie įprastos veiklos.</div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">💧</div><div><strong>Chemoterapija</strong><span>Dažniausiai gydoma ciklais, tarp jų paliekant atsistatymo laiką</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Dažniausiai dienos stacionare, kartais stacionare, o kai kurie vaistai vartojami namuose.</span></div>
-        <div class="fact"><b>⏱ Kiek trunka?</b><span>Gydymas dažnai skiriamas ciklais kas kelias savaites. Tikslus ciklų skaičius ir intervalai priklauso nuo konkretaus režimo.</span></div>
-        <div class="fact"><b>🧪 Prieš ciklą</b><span>Dažnai atliekami kraujo tyrimai. Jei rodikliai nepakankami, gydymas gali būti atidėtas.</span></div>
-        <div class="fact"><b>⚠️ Svarbi taisyklė</b><span>Jei po chemoterapijos temperatūra pakyla iki <b>38 °C ar daugiau</b> arba staiga labai pablogėja savijauta net be karščiavimo, reikia nedelsiant susisiekti su gydytoju / gydymo įstaiga.</span></div>
-      </div>
-      <div class="warn" style="margin-top:9px"><b>Artimajam:</b> turėkite termometrą, gydymo skyriaus telefono numerį ir sąrašą vaistų, kuriuos pacientas gali vartoti namuose.</div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">☢️</div><div><strong>Radioterapija</strong><span>Gydymas planuojamas individualiai; dažnai reikia kelių ar daugelio apsilankymų</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Spindulinės terapijos centre. Prieš gydymą atliekamas planavimas.</span></div>
-        <div class="fact"><b>⏱ Kiek trunka?</b><span>Gydymo dienų skaičius priklauso nuo ligos, gydymo tikslo ir pasirinktos schemos. Gali būti nuo vienos ar kelių procedūrų iki kelių savaičių.</span></div>
-        <div class="fact"><b>🏠 Ką stebėti?</b><span>Nuovargį, odos reakcijas ir kitus simptomus, priklausančius nuo švitinamos kūno srities.</span></div>
-        <div class="fact"><b>📞 Kam skambinti?</b><span>Radioterapijos komandai, jei simptomai ryškūs, greitai stiprėja arba trukdo valgyti, gerti, kvėpuoti ar atlikti kasdienę veiklą.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🛡️</div><div><strong>Imunoterapija</strong><span>Aktyvinama imuninė sistema; šalutiniai poveikiai gali būti kitokie nei chemoterapijos</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Dažniausiai dienos stacionare ar ambulatoriškai, priklausomai nuo vaisto.</span></div>
-        <div class="fact"><b>⏱ Kiek trunka?</b><span>Intervalai skiriasi pagal vaistą ir gydymo planą. Turėkite konkretų kalendorių.</span></div>
-        <div class="fact"><b>⚠️ Ką svarbu žinoti?</b><span>Imunoterapija gali sukelti uždegimines reakcijas įvairiuose organuose. Naujas viduriavimas, dusulys, stiprus bėrimas, ryškus silpnumas ar kiti nauji neįprasti simptomai turėtų būti aptarti su gydymo komanda.</span></div>
-        <div class="fact"><b>📞 Kada skambinti?</b><span>Geriau pranešti anksčiau, o ne laukti kito suplanuoto vizito, jei atsiranda naujas ryškus simptomas.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🎯</div><div><strong>Taikinių / hormoninis gydymas</strong><span>Dažnai vartojamas ilgiau, kartais namuose</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Dalis gydymo skiriama ambulatoriškai, kai kurie vaistai vartojami namuose.</span></div>
-        <div class="fact"><b>⏱ Kiek trunka?</b><span>Gali būti tęsiamas mėnesius ar ilgiau, tačiau konkretus planas priklauso nuo ligos ir vaisto.</span></div>
-        <div class="fact"><b>💊 Ką prižiūrėti?</b><span>Vaistų vartojimo laiką, praleistas dozes, sąveikas ir gydytojo paskirtus kraujo ar kitus kontrolinius tyrimus.</span></div>
-        <div class="fact"><b>📞 Kada kreiptis?</b><span>Dėl naujo ar ryškaus šalutinio poveikio, ypač jei jis trukdo valgyti, gerti, vaikščioti ar įprastai kvėpuoti.</span></div>
-      </div>
-    </div>
-  </details>
-</div>
-
-<div class="card">
-  <h3>Artimojo kontrolinis sąrašas prieš kiekvieną gydymo ciklą / vizitą</h3>
-  <div class="check">
-    <div>✅ Žinau gydymo datą, laiką ir vietą.</div>
-    <div>✅ Žinau, ar prieš vizitą reikia kraujo tyrimų.</div>
-    <div>✅ Turime vaistų sąrašą ir žinome, ką vartoti tą dieną.</div>
-    <div>✅ Užrašėme naujus simptomus nuo praėjusio gydymo.</div>
-    <div>✅ Turime gydymo skyriaus telefoną.</div>
-    <div>✅ Žinome, kaip grįšime namo ir ar reikia pavėžėjimo.</div>
-    <div>✅ Žinome kito ciklo / vizito datą arba kas ją praneš.</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kada kreiptis skubiai?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>☎️ Nedelsiant susisiekti su gydymo komanda / gydymo įstaiga</strong><span>Po chemoterapijos temperatūra ≥38 °C; staigus ryškus savijautos pablogėjimas net be karščiavimo; pasikartojantis vėmimas ir negalėjimas gerti; ryškus viduriavimas; naujas stiprus bėrimas; didėjantis kraujavimas; žaizdos paraudimas, pūliavimas ar kitas gydymo komandos nurodytas pavojingas simptomas.</span></div>
-    <div class="info-item"><strong>🚑 112</strong><span>Jei žmogui sunku kvėpuoti, netenka sąmonės, prasideda traukuliai, yra stiprus krūtinės skausmas, nekontroliuojamas gausus kraujavimas, sunki alerginė reakcija ar kita akivaizdžiai gyvybei pavojinga būklė.</span></div>
-    <div class="info-item"><strong>☎️ 113</strong><span>Jei reikia medicininės konsultacijos ir neaišku, ar būklė reikalauja skubiosios pagalbos.</span></div>
-  </div>
-  <div class="warn" style="margin-top:9px">Gydymo komandos pateiktos individualios instrukcijos visada svarbesnės už bendrą programėlės informaciją.</div>
-</div>
-
-<div class="card">
-  <h3>Pavėžėjimas gydymo metu</h3>
-  <div class="contact">
-    <div><b>1808 – pacientų pavėžėjimas</b><small>Registracija ir konsultacijos.</small></div>
-    <a class="call" href="tel:1808">Skambinti</a>
-  </div>
-  <div class="small">Vykstant iš namų į planinę specializuotą paslaugą, dienos stacionarą ar kitą numatytą gydymą, pavėžėjimą paprastai reikia užsakyti ne vėliau kaip prieš 2 darbo dienas. Pacientą gali užregistruoti ir kitas žmogus. Operatorius patikrina, ar konkrečiu atveju paslauga priklauso.</div>
-</div>
-
-<div class="card">
-  <h3>Ko paklausti šiame etape?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>„Koks tikslus gydymo kalendorius?“</strong><span>Kada kitas ciklas, procedūra ar kontrolinis vizitas?</span></div>
-    <div class="info-item"><strong>„Kokius simptomus galime stebėti namuose, o dėl kurių skambinti tą pačią dieną?“</strong><span>Paprašykite konkretaus sąrašo pagal gydymą.</span></div>
-    <div class="info-item"><strong>„Kokiu numeriu skambinti vakarais ir savaitgaliais?“</strong><span>Ne tik bendras ligoninės numeris, bet konkretus kontaktas, jei toks suteikiamas.</span></div>
-    <div class="info-item"><strong>„Ar prieš kitą gydymą reikia tyrimų?“</strong><span>Kur ir kada juos atlikti?</span></div>
-    <div class="info-item"><strong>„Kokius vaistus vartoti profilaktiškai ar nuo šalutinių poveikių?“</strong><span>Kada juos pradėti ir kiek laiko vartoti?</span></div>
-    <div class="info-item"><strong>„Ar galime naudotis pavėžėjimu?“</strong><span>Jei taip – kada registruotis numeriu 1808?</span></div>
-    <div class="info-item"><strong>„Kas bus, jei gydymą teks atidėti?“</strong><span>Dėl kraujo rodiklių, infekcijos ar kitų priežasčių – kas praneš naują datą?</span></div>
-  </div>
-</div>
-
-<div class="card source">
-  <h3>Oficialūs šaltiniai</h3>
-  <div class="check">
-    <div>↗ <a href="https://nvi.lt/vezio-tipas/gerklu-vezys/" target="_blank" rel="noopener">Nacionalinis vėžio institutas – chemoterapijos šalutiniai poveikiai ir karščiavimas</a></div>
-    <div>↗ <a href="https://sam.lrv.lt/lt/veiklos-sritys/asmens-sveikatos-prieziura/pacientu-pavezejimas/" target="_blank" rel="noopener">SAM – pacientų pavėžėjimo sąlygos</a></div>
-    <div>↗ <a href="https://1808.lt/" target="_blank" rel="noopener">1808 – pacientų pavėžėjimas</a></div>
-  </div>
-  <div class="small" style="margin-top:9px">Turinio peržiūros data: 2026-10-05.</div>
-</div>
-</section>
-
-
-<section id="follow" class="screen">
-<button class="backlink" data-screen="start">← Grįžti</button>
-
-<div class="card">
-  <div class="stagehero">
-    <div class="ill">🕒</div>
-    <div>
-      <h2>Gydymas baigtas / stebėjimas</h2>
-      <div class="small">Aktyvus gydymas baigėsi, tačiau priežiūra nesibaigia. Dabar svarbu turėti aiškų kontrolės planą, žinoti, kas stebės jūsų artimąjį ir dėl kokių naujų simptomų kreiptis anksčiau.</div>
+      <div class="footer">NursePlan LT V5 • demonstracinė versija • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
     </div>
   </div>
-  <div class="flow">
-    <div class="pill active">Gydymo pabaiga</div>
-    <div class="pill">Pirma kontrolė</div>
-    <div class="pill">Stebėsena</div>
-    <div class="pill">Atsistatymas</div>
-    <div class="pill">Kreiptis anksčiau</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kas gali priklausyti šiame etape?</h3>
-  <div class="rights">
-    <div class="right"><b>✓ Reguliari stebėsena pagal konkrečią onkologinę ligą</b><p>Po gydymo planuojamos kontrolinės apžiūros ir tyrimai. Jų dažnis priklauso nuo naviko rūšies, stadijos, gydymo ir individualios rizikos – vieno grafiko visiems vėžiams nėra.</p></div>
-    <div class="right"><b>✓ Šeimos gydytojo ir onkologų bendradarbiavimas</b><p>Dalį ilgalaikės stebėsenos gali atlikti šeimos gydytojas, konsultuodamasis su onkologais ar kitais specialistais, priklausomai nuo ligos.</p></div>
-    <div class="right"><b>✓ Medicininė reabilitacija – jei yra indikacijų</b><p>Po kai kurių onkologinių operacijų ar gydymo gali būti skiriama medicininė reabilitacija. Konkrečią rūšį ir poreikį nustato gydytojas pagal paciento būklę.</p></div>
-    <div class="right"><b>✓ Pagalba dėl ilgalaikių gydymo pasekmių</b><p>Nuovargis, skausmas, limfedema, mitybos, seksualinės funkcijos, šlapinimosi ar kiti sutrikimai gali būti aptariami su gydymo komanda – nereikia laukti, kol jie taps labai ryškūs.</p></div>
-    <div class="right"><b>✓ Psichologinė pagalba</b><p>Gydymo pabaiga nebūtinai reiškia, kad nerimas baigiasi. Baimė dėl atkryčio ir laukimas prieš kontrolinius tyrimus yra dažni; verta klausti apie psichologinę pagalbą.</p></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kas po ko?</h3>
-
-  <details class="accord" open>
-    <summary><div class="ico">📄</div><div><strong>1. Gydymo pabaigos santrauka</strong><span>Ką svarbu turėti prieš išeinant iš aktyvaus gydymo etapo?</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📋 Ką pasižymėti?</b><span>Diagnozę, atlikto gydymo rūšis ir datas, svarbius šalutinius poveikius, vartojamus vaistus ir alergijas.</span></div>
-        <div class="fact"><b>📅 Kas toliau?</b><span>Turi būti aišku, kada numatyta kita kontrolė ir kas ją organizuoja.</span></div>
-        <div class="fact"><b>👤 Kas stebės?</b><span>Onkologas, kitas specialistas, šeimos gydytojas arba keli specialistai kartu – priklauso nuo ligos.</span></div>
-        <div class="fact"><b>📞 Koks kontaktas?</b><span>Turėkite numerį, kuriuo galima kreiptis, jei iki kito vizito atsiranda naujų simptomų.</span></div>
-      </div>
-      <div class="check">
-        <div>✓ Paprašykite aiškaus kontrolės plano raštu arba e. sveikatoje.</div>
-        <div>✓ Užsirašykite, kas turi užregistruoti kitą vizitą ar tyrimą.</div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🩺</div><div><strong>2. Pirmoji kontrolė po gydymo</strong><span>Vertinama savijauta, gydymo rezultatas ir liekamieji poveikiai</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>⏱ Kada?</b><span>Konkreti data priklauso nuo naviko rūšies ir gydymo. Nenaudokite vieno universalaus intervalo visoms onkologinėms ligoms.</span></div>
-        <div class="fact"><b>🧪 Kokie tyrimai?</b><span>Tik tie, kurie numatyti konkrečios ligos stebėsenos plane: apžiūra, kraujo, vaizdiniai ar kiti tyrimai.</span></div>
-        <div class="fact"><b>📞 Jei datos nėra?</b><span>Skambinkite gydančiam skyriui, registratūrai ar šeimos gydytojui ir pasitikrinkite, kas organizuoja stebėseną.</span></div>
-        <div class="fact"><b>⚠️ Svarbu</b><span>Nereikia savarankiškai darytis „visų įmanomų“ KT, žymenų ar kitų tyrimų – stebėseną turi parinkti gydytojas.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">📆</div><div><strong>3. Reguliari ilgalaikė stebėsena</strong><span>Grafikas priklauso nuo konkretaus vėžio</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="warn"><b>Nėra vieno grafiko visiems.</b> Pavyzdžiui, NVI pateikiami skirtingi kontrolės intervalai po krūties, prostatos, skydliaukės, sėklidės ar kitų navikų gydymo. Todėl programėlėje vėliau galime pridėti atskirus planus pagal diagnozę.</div>
-      <div class="check" style="margin-top:9px">
-        <div>✓ Žinokite kitos kontrolės datą.</div>
-        <div>✓ Žinokite, kokie konkretūs tyrimai suplanuoti.</div>
-        <div>✓ Užsirašykite naujus ar pasikeitusius simptomus.</div>
-        <div>✓ Turėkite aktualų vaistų sąrašą.</div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🌿</div><div><strong>4. Atsistatymas ir reabilitacija</strong><span>Po gydymo gali likti simptomų, kuriems reikia pagalbos</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>🏃 Fizinis atsistatymas</b><span>Silpnumas, sumažėjusi ištvermė, judėjimo apribojimai ar skausmas gali būti reabilitacijos priežastis.</span></div>
-        <div class="fact"><b>🍽 Mityba</b><span>Jei svoris krenta, sunku ryti, valgyti ar atgauti jėgas – verta klausti dėl dietologo / mitybos specialisto pagalbos.</span></div>
-        <div class="fact"><b>🧠 Emocinė būklė</b><span>Atkryčio baimė, miego sutrikimai ar stiprus nerimas gali tęstis ir gydymui pasibaigus.</span></div>
-        <div class="fact"><b>🩹 Specifinės pasekmės</b><span>Limfedema, stomos, šlapimo ar žarnyno funkcijos, seksualinės funkcijos ir kiti klausimai turėtų būti sprendžiami pagal konkretų gydymą.</span></div>
-      </div>
-      <div class="warn" style="margin-top:9px">Medicininė reabilitacija nėra automatiškai skiriama visiems onkologiniams pacientams. Poreikį ir tinkamą paslaugos rūšį nustato gydytojas pagal indikacijas.</div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🔔</div><div><strong>5. Kada kreiptis nelaukiant planinės kontrolės?</strong><span>Naujas simptomas nėra automatiškai atkrytis, bet jo nereikia ignoruoti</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="info-list">
-        <div class="info-item"><strong>Naujas arba nuolat stiprėjantis simptomas</strong><span>Ypač jei jis išlieka, blogėja ar nepraeina kaip įprasta.</span></div>
-        <div class="info-item"><strong>Naujas guzelis, neįprastas kraujavimas ar žaizdos pokytis</strong><span>Susisiekite su gydytoju ir nelaukite kitos planinės kontrolės.</span></div>
-        <div class="info-item"><strong>Nepaaškinamas ryškus svorio kritimas ar vis didėjantis silpnumas</strong><span>Reikalingas įvertinimas; priežastis nebūtinai onkologinė.</span></div>
-        <div class="info-item"><strong>Nauji ryškūs skausmai, dusulys, neurologiniai simptomai</strong><span>Kreipimosi skubumas priklauso nuo stiprumo ir būklės. Jei kyla grėsmė gyvybei – 112.</span></div>
-      </div>
-    </div>
-  </details>
-</div>
-
-<div class="card">
-  <h3>Artimojo kontrolinis sąrašas</h3>
-  <div class="check">
-    <div>✅ Žinau, kada artimojo kita kontrolė.</div>
-    <div>✅ Žinau, kas ją organizuoja.</div>
-    <div>✅ Žinau, kokie tyrimai numatyti – ir kurių nereikia daryti savarankiškai.</div>
-    <div>✅ Turime gydymo santrauką / svarbiausius išrašus.</div>
-    <div>✅ Žinome, į ką kreiptis dėl ilgalaikių gydymo pasekmių.</div>
-    <div>✅ Žinome, dėl kokių naujų simptomų nereikia laukti kito vizito.</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Ko paklausti šiame etape?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>„Kada bus kita kontrolė ir kas ją užregistruos?“</strong><span>Turėkite konkrečią datą arba aiškų planą.</span></div>
-    <div class="info-item"><strong>„Kokie tyrimai reikalingi prieš kitą vizitą?“</strong><span>Ir kur juos atlikti?</span></div>
-    <div class="info-item"><strong>„Kas toliau stebės – onkologas ar šeimos gydytojas?“</strong><span>Kas yra pagrindinis kontaktas?</span></div>
-    <div class="info-item"><strong>„Kokie simptomai šiame etape normalūs po gydymo?“</strong><span>O dėl kurių kreiptis anksčiau?</span></div>
-    <div class="info-item"><strong>„Ar reikalinga medicininė reabilitacija?“</strong><span>Jei yra funkcinių sutrikimų ar sunku grįžti į kasdienę veiklą.</span></div>
-    <div class="info-item"><strong>„Ar reikia stebėti konkretų vėžio žymenį?“</strong><span>Žymenys tinka ne visoms ligoms ir neturėtų būti atliekami atsitiktinai.</span></div>
-    <div class="info-item"><strong>„Kam skambinti, jei tarp kontrolinių vizitų atsiras naujas simptomas?“</strong><span>Turėkite konkretų numerį.</span></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Svarbūs numeriai</h3>
-  <div class="contact"><div><b>112 – skubi pagalba</b><small>Jei kyla grėsmė gyvybei.</small></div><a class="call" href="tel:112">Skambinti</a></div>
-  <div class="contact"><div><b>113 – medicininė konsultacija</b><small>Kai neaišku, ar būklė skubi.</small></div><a class="call" href="tel:113">Skambinti</a></div>
-  <div class="contact"><div><b>Ligonių kasa</b><small>+370 5 232 2222</small></div><a class="call" href="tel:+37052322222">Skambinti</a></div>
-  <div class="contact"><div><b>POLA</b><small>+370 620 74646</small></div><a class="call" href="tel:+37062074646">Skambinti</a></div>
-</div>
-
-<div class="card source">
-  <h3>Oficialūs šaltiniai</h3>
-  <div class="check">
-    <div>↗ <a href="https://sena.nvi.lt/stebesena-po-gydymo/" target="_blank" rel="noopener">NVI – stebėsenos po gydymo pavyzdys</a></div>
-    <div>↗ <a href="https://sena.nvi.lt/stebesena-po-gydymo-10/" target="_blank" rel="noopener">NVI – krūties vėžio stebėsenos pavyzdys</a></div>
-    <div>↗ <a href="https://sena.nvi.lt/stebesena-po-gydymo-14/" target="_blank" rel="noopener">NVI – prostatos vėžio stebėsenos pavyzdys</a></div>
-    <div>↗ <a href="https://ligoniukasa.lrv.lt/lt/veiklos-sritys/informacija-gyventojams/gydymo-ir-sveikatos-prieziuros-paslaugos/medicinine-reabilitacija/" target="_blank" rel="noopener">Ligonių kasa – medicininė reabilitacija</a></div>
-    <div>↗ <a href="https://sena.nvi.lt/vezio-zymenys/" target="_blank" rel="noopener">NVI – vėžio žymenys</a></div>
-  </div>
-  <div class="small" style="margin-top:9px">Turinio peržiūros data: 2026-10-05.</div>
-</div>
-</section>
-
-
-<section id="progression" class="screen">
-<button class="backlink" data-screen="start">← Grįžti</button>
-
-<div class="card">
-  <div class="stagehero">
-    <div class="ill">📈</div>
-    <div>
-      <h2>Liga progresuoja / gydymas keičiamas</h2>
-      <div class="small">Progresavimas nereiškia, kad „nieko nebegalima daryti“. Dažniausiai pirmiausia reikia tiksliai suprasti, kas pasikeitė, ar tai tikrai patvirtintas progresavimas ir koks bus kitas gydymo tikslas.</div>
-    </div>
-  </div>
-  <div class="flow">
-    <div class="pill active">Patvirtinti pokytį</div>
-    <div class="pill">Papildomi tyrimai</div>
-    <div class="pill">Naujas planas</div>
-    <div class="pill">Kita gydymo eilė</div>
-    <div class="pill">Simptomų kontrolė</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Ką reiškia „liga progresuoja“?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>Vaizdiniai tyrimai rodo ligos didėjimą ar naujus židinius</strong><span>Rezultatą reikia vertinti lyginant su ankstesniais tyrimais ir konkretaus gydymo kontekste.</span></div>
-    <div class="info-item"><strong>Atsirado naujų simptomų arba blogėja būklė</strong><span>Kartais gydytojas turi įvertinti, ar priežastis tikrai onkologinė liga, ar gydymo šalutinis poveikis, infekcija ar kita būklė.</span></div>
-    <div class="info-item"><strong>Keičiasi gydymo tikslas arba gydymo eilė</strong><span>Gali būti parenkamas kitas sisteminis gydymas, vietinis gydymas, klinikinis tyrimas arba daugiau dėmesio skiriama simptomų kontrolei.</span></div>
-  </div>
-  <div class="warn" style="margin-top:9px"><b>Svarbu:</b> vienas sakinys radiologinio tyrimo atsakyme ar vienas pakitęs kraujo rodiklis dar nėra artimojo gydymo planas. Reikia gydytojo paaiškinimo, ką šis pokytis reiškia būtent jam.</div>
-</div>
-
-<div class="card">
-  <h3>Kas gali būti aktualu / priklausyti šiame etape?</h3>
-  <div class="rights">
-    <div class="right"><b>✓ Naujas gydymo situacijos įvertinimas</b><p>Gydymo komanda įvertina, kur ir kiek liga pasikeitė, ankstesnio gydymo poveikį, paciento bendrą būklę ir galimus tolesnius variantus.</p></div>
-    <div class="right"><b>✓ Kito tos pačios kvalifikacijos specialisto nuomonė</b><p>Pacientų teisių įstatymas numato teisę gauti kito tos pačios profesinės kvalifikacijos specialisto nuomonę. Praktinė apmokėjimo ir registracijos tvarka priklauso nuo konkrečios situacijos.</p></div>
-    <div class="right"><b>✓ Papildomi biomarkerių / molekuliniai tyrimai – kai jie turi prasmę konkrečiai ligai</b><p>Kai kuriems navikams ligai progresuojant gali būti svarbu pakartotinai įvertinti biologinius žymenis ar atlikti papildomą audinio / kraujo tyrimą. Tai nėra būtina visiems.</p></div>
-    <div class="right"><b>✓ Klinikinio tyrimo galimybės įvertinimas</b><p>Klinikiniai tyrimai nėra „paskutinė priemonė“ ir tinka ne kiekvienam, tačiau progresuojant ligai verta paklausti, ar Lietuvoje yra tyrimas, kurio kriterijus pacientas galėtų atitikti.</p></div>
-    <div class="right"><b>✓ Simptomų ir paliatyvioji pagalba, kai jos reikia</b><p>Simptomų kontrolė gali būti reikalinga nepriklausomai nuo to, ar dar tęsiamas priešnavikinis gydymas. Paliatyvioji pagalba nėra vien paskutinių gyvenimo dienų priežiūra.</p></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kas po ko?</h3>
-
-  <details class="accord" open>
-    <summary><div class="ico">🔎</div><div><strong>1. Patvirtinama, kas iš tikrųjų pasikeitė</strong><span>Koks tyrimas rodo progresavimą ir su kuo jis palygintas?</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Pas gydantį onkologą ar kitą ligą gydantį specialistą.</span></div>
-        <div class="fact"><b>📋 Ką išsiaiškinti?</b><span>Ar progresavimas patvirtintas? Kurioje vietoje? Ar liga progresuoja visur, ar tik vienoje / keliose srityse?</span></div>
-        <div class="fact"><b>🧪 Ar reikia dar tyrimų?</b><span>Priklauso nuo situacijos. Kartais reikia papildomo KT, MRT, PET/KT, biopsijos ar laboratorinių tyrimų.</span></div>
-        <div class="fact"><b>📞 Kam skambinti?</b><span>Gydančiam skyriui arba atvejo vadybininkui, jei neaišku, kada bus aptartas rezultatas.</span></div>
-      </div>
-      <div class="check">
-        <div>✓ Turėkite ankstesnių ir naujausių tyrimų datas.</div>
-        <div>✓ Užsirašykite, ką gydytojas vadina progresavimu ir kuo tai pagrįsta.</div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🧬</div><div><strong>2. Sprendžiama, ar reikia papildomų biologinių tyrimų</strong><span>Biopsija, imunohistochemija, molekuliniai ar genetiniai žymenys – tik kai tai gali pakeisti gydymą</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur?</b><span>Specializuotoje gydymo įstaigoje / patologijos ar molekulinės diagnostikos laboratorijoje.</span></div>
-        <div class="fact"><b>❓ Kodėl?</b><span>Kai kurių navikų biologija laikui bėgant ar po gydymo gali būti vertinama iš naujo, jei nuo to priklauso kito gydymo pasirinkimas.</span></div>
-        <div class="fact"><b>⏱ Kiek laukti?</b><span>Priklauso nuo tyrimo. Paklauskite, ar rezultatas būtinas prieš priimant kitą gydymo sprendimą.</span></div>
-        <div class="fact"><b>⚠️ Ne visiems</b><span>Pakartotinė biopsija ar platus molekulinis tyrimas nėra automatiškai reikalingi kiekvienam progresavimo atvejui.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">👥</div><div><strong>3. Sudaromas naujas gydymo planas</strong><span>Kita gydymo eilė, vietinis gydymas, stebėjimas ar simptomų kontrolė</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="info-list">
-        <div class="info-item"><strong>Kita sisteminio gydymo eilė</strong><span>Gali būti keičiama chemoterapija, imunoterapija, taikinių ar hormoninis gydymas – pagal naviko tipą ir ankstesnį gydymą.</span></div>
-        <div class="info-item"><strong>Vietinis gydymas</strong><span>Kai kuriais atvejais gali būti svarstoma operacija, radioterapija ar kita vietinė procedūra, ypač jei problema ribota.</span></div>
-        <div class="info-item"><strong>Klinikinis tyrimas</strong><span>Jei yra tinkamas tyrimas ir pacientas atitinka įtraukimo kriterijus.</span></div>
-        <div class="info-item"><strong>Simptomų / paliatyvus gydymas</strong><span>Tikslas – kuo geresnė savijauta, funkcija ir gyvenimo kokybė. Tai gali būti svarbu ir kartu su dalimi priešnavikinio gydymo.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🩺</div><div><strong>4. Jei norite – galima prašyti antros nuomonės</strong><span>Kito tos pačios profesinės kvalifikacijos specialisto vertinimo</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📄 Ką turėti?</b><span>Histologijos išvadą, naujausius vaizdinius tyrimus / jų aprašymus, gydymo santrauką ir vaistų sąrašą.</span></div>
-        <div class="fact"><b>❓ Kada ypač verta?</b><span>Kai gydymo variantai sudėtingi, yra keli galimi keliai, siūloma didelės rizikos procedūra arba norite įvertinti klinikinio tyrimo galimybę.</span></div>
-        <div class="fact"><b>⚠️ Svarbu</b><span>Antros nuomonės paieška neturėtų be reikalo atidėti skubiai reikalingo gydymo. Paklauskite gydytojo, kiek laiko saugu skirti sprendimui.</span></div>
-        <div class="fact"><b>👤 Artimojo vaidmuo</b><span>Padėti surinkti dokumentus ir aiškiai užrašyti klausimus, bet galutinį sprendimą priima pats pacientas.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🧪</div><div><strong>5. Ar yra klinikinių tyrimų?</strong><span>Galimybė priklauso nuo diagnozės, ankstesnio gydymo ir tyrimo kriterijų</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>📍 Kur ieškoti?</b><span>Nacionalinis vėžio institutas skelbia vykdomų klinikinių tyrimų sąrašus. Tyrimai taip pat vyksta kitose Lietuvos ir Europos gydymo įstaigose.</span></div>
-        <div class="fact"><b>❓ Ko klausti?</b><span>„Ar yra klinikinis tyrimas, kuriam mano artimasis galėtų tikti?“</span></div>
-        <div class="fact"><b>⚠️ Ką žinoti?</b><span>Įtraukimo kriterijai yra griežti. Vien diagnozės pavadinimo nepakanka – vertinama stadija, ankstesnis gydymas, tyrimų rezultatai ir bendra būklė.</span></div>
-        <div class="fact"><b>💬 Ką aptarti?</b><span>Galimą naudą, riziką, papildomus vizitus, tyrimus ir alternatyvas.</span></div>
-      </div>
-    </div>
-  </details>
-</div>
-
-<div class="card">
-  <h3>Ką galite padaryti jūs, kaip artimasis?</h3>
-  <div class="check">
-    <div>✅ Užsirašykite tiksliai, kas pasikeitė ir kuo tai pagrįsta.</div>
-    <div>✅ Turėkite visų ankstesnių gydymų sąrašą: pavadinimus, datas, dėl ko gydymas nutrauktas ar pakeistas.</div>
-    <div>✅ Užrašykite naujus simptomus ir kada jie prasidėjo.</div>
-    <div>✅ Padėkite surinkti išrašus, histologiją ir vaizdinius tyrimus, jei bus prašoma antros nuomonės.</div>
-    <div>✅ Paklauskite apie kitą gydymo tikslą ir konkrečią pradžios datą.</div>
-    <div>✅ Nepamirškite simptomų kontrolės – jos nereikia atidėti, kol sprendžiamas kitas priešnavikinis gydymas.</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Ko paklausti šiame etape?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>„Ar tai tikrai patvirtintas progresavimas?“</strong><span>Kokiu tyrimu ir su kuo palyginus?</span></div>
-    <div class="info-item"><strong>„Ar dabartinis gydymas stabdomas, ar kol kas tęsiamas?“</strong><span>Nekeiskite vaistų savarankiškai.</span></div>
-    <div class="info-item"><strong>„Ar reikia naujos biopsijos ar molekulinių tyrimų?“</strong><span>Ar tai pakeistų gydymo pasirinkimą?</span></div>
-    <div class="info-item"><strong>„Kokie dabar galimi gydymo variantai ir koks jų tikslas?“</strong><span>Ką rekomenduojate pirmiausia ir kodėl?</span></div>
-    <div class="info-item"><strong>„Ar verta antro specialisto nuomonė?“</strong><span>Kiek laiko saugu skirti jai gauti?</span></div>
-    <div class="info-item"><strong>„Ar yra tinkamų klinikinių tyrimų?“</strong><span>Lietuvoje arba kitame centre?</span></div>
-    <div class="info-item"><strong>„Ką galime padaryti dėl simptomų jau dabar?“</strong><span>Skausmas, pykinimas, dusulys, miegas, nerimas, mityba ir kiti simptomai neturi laukti naujo gydymo.</span></div>
-    <div class="info-item"><strong>„Kas yra mūsų pagrindinis kontaktas ir kada kitas sprendimo taškas?“</strong><span>Kita konsultacija, tyrimas, konsiliumas ar gydymo pradžia.</span></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kada nelaukti?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>🚑 112</strong><span>Staigus dusulys ar kvėpavimo nepakankamumas, sąmonės netekimas, traukuliai, stiprus naujas krūtinės skausmas, gausus nekontroliuojamas kraujavimas ar kita akivaizdžiai gyvybei pavojinga būklė.</span></div>
-    <div class="info-item"><strong>☎️ Gydymo įstaigai tą pačią dieną</strong><span>Naujas ryškus ar greitai stiprėjantis simptomas, nevaldomas skausmas, pasikartojantis vėmimas, negalėjimas gerti, naujas ryškus neurologinis simptomas ar gydymo komandos nurodytas pavojingas požymis.</span></div>
-  </div>
-</div>
-
-<div class="card source">
-  <h3>Oficialūs šaltiniai</h3>
-  <div class="check">
-    <div>↗ <a href="https://e-seimas.lrs.lt/rs/actualedition/TAIS.359503/wzDyTDFQxx/" target="_blank" rel="noopener">Pacientų teisių įstatymas – teisė į kito specialisto nuomonę</a></div>
-    <div>↗ <a href="https://sena.nvi.lt/klinikiniai-tyrimai-6/" target="_blank" rel="noopener">NVI – klinikiniai tyrimai</a></div>
-    <div>↗ <a href="https://sam.lrv.lt/lt/dazniausiai-uzduodami-klausimai-duk-1/" target="_blank" rel="noopener">SAM – paliatyviosios pagalbos DUK</a></div>
-    <div>↗ <a href="https://sam.lrv.lt/lt/veiklos-sritys/asmens-sveikatos-prieziura/pacientu-pavezejimas/" target="_blank" rel="noopener">SAM – pacientų pavėžėjimas onkologinio ir paliatyvaus gydymo metu</a></div>
-  </div>
-  <div class="small" style="margin-top:9px">Turinio peržiūros data: 2026-10-05.</div>
-</div>
-</section>
-
-
-<section id="palliative" class="screen">
-<button class="backlink" data-screen="start">← Grįžti</button>
-
-<div class="card">
-  <div class="stagehero">
-    <div class="ill">🤝</div>
-    <div>
-      <h2>Paliatyvioji priežiūra</h2>
-      <div class="small">Tikslas – kuo geresnė jūsų artimojo savijauta ir gyvenimo kokybė, kartu padedant šeimai. Paliatyvioji pagalba nėra vien paskutinių gyvenimo dienų priežiūra ir nebūtinai reiškia, kad visi priešnavikiniai gydymo būdai nutraukiami.</div>
-    </div>
-  </div>
-  <div class="flow">
-    <div class="pill active">Poreikis</div>
-    <div class="pill">Siuntimas</div>
-    <div class="pill">Pagalbos vieta</div>
-    <div class="pill">Simptomų planas</div>
-    <div class="pill">Pagalba artimajam</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Pirmiausia – ką svarbu žinoti?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>Paliatyvioji pagalba ≠ „nebėra ką daryti“</strong><span>Jos tikslas – aktyviai valdyti skausmą ir kitus varginančius simptomus, spręsti psichologinius, socialinius ir praktinius poreikius.</span></div>
-    <div class="info-item"><strong>Kai kurie onkologiniai gydymo būdai gali būti tęsiami</strong><span>Paliatyvioji pagalba gali būti derinama su chemoterapija, spinduline terapija, biologine, hormonine ar kita simptomus ir ligą kontroliuojančia terapija, jei gydytojų komanda ją skiria.</span></div>
-    <div class="info-item"><strong>Pagalbos planas turi būti individualus</strong><span>Jame vertinami fiziniai, psichologiniai, socialiniai ir dvasiniai poreikiai, atsižvelgiant į paties paciento vertybes.</span></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kas gali priklausyti šiame etape?</h3>
-  <div class="rights">
-    <div class="right"><b>✓ Paliatyvioji pagalba namuose</b><p>Jei pacientas atitinka kriterijus, paslaugos gali būti teikiamos jo namuose. Už jų organizavimą turi būti užtikrinta atsakomybė ir pirminės sveikatos priežiūros įstaigos lygmeniu.</p></div>
-    <div class="right"><b>✓ Specialistų komanda</b><p>Ambulatorinę paliatyviąją pagalbą gali teikti gydytojas, slaugytojas, slaugytojo padėjėjas, socialinis darbuotojas, medicinos psichologas ir kineziterapeutas.</p></div>
-    <div class="right"><b>✓ Dienos stacionaro paliatyvioji pagalba</b><p>Kai reikia intensyvesnio simptomų valdymo ar procedūrų, bet nebūtina gulėti ligoninėje visą parą, gali būti skiriamos dienos stacionaro paslaugos.</p></div>
-    <div class="right"><b>✓ Stacionarinė paliatyvioji pagalba</b><p>Kai būklė ir simptomai reikalauja nuolatinės profesionalios priežiūros, gali būti skiriamos stacionarinės paliatyviosios pagalbos paslaugos.</p></div>
-    <div class="right"><b>✓ Psichologinė ir socialinė pagalba</b><p>Paliatyviosios pagalbos plane sprendžiami ne tik medicininiai simptomai. Socialinis darbuotojas ir medicinos psichologas gali padėti ir pacientui, ir jo artimiesiems.</p></div>
-    <div class="right"><b>✓ Pagalba prižiūrinčiai šeimai</b><p>Jei šeimai nustatomas socialinių paslaugų poreikis, gali būti organizuojama pagalba į namus, dienos socialinė globa ar laikino atokvėpio paslauga.</p></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kaip pradėti?</h3>
-
-  <details class="accord" open>
-    <summary><div class="ico">📝</div><div><strong>1. Paprašyti įvertinti paliatyviosios pagalbos poreikį</strong><span>Nereikia laukti, kol šeima visiškai išseks</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>👤 Nuo ko pradėti?</b><span>Kreipkitės į artimąjį gydantį gydytoją ir aiškiai pasakykite, kokie simptomai ir kasdienės priežiūros sunkumai šiuo metu vargina.</span></div>
-        <div class="fact"><b>📄 Siuntimas</b><span>Ambulatorinėms paliatyviosios pagalbos paslaugoms siuntimą E027 išrašo gydantis gydytojas.</span></div>
-        <div class="fact"><b>📋 Kas vertinama?</b><span>Ligos eiga, funkcinė būklė, simptomų kontrolės poreikis ir tai, kokios pagalbos reikia pacientui bei šeimai.</span></div>
-        <div class="fact"><b>🏠 Kur teikti?</b><span>Paliatyviosios pagalbos komanda kartu su pacientu ir artimaisiais nustato reikalingą pagalbos mastą ir vietą.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🏠</div><div><strong>2. Jei pagalba teikiama namuose</strong><span>Turėkite aiškų planą, kas atvyksta ir kam skambinti</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="facts">
-        <div class="fact"><b>🕗 Kada teikiama?</b><span>Pagal galiojančią tvarką ambulatorinės paliatyviosios pagalbos paslaugos namuose teikiamos kasdien 8–20 val.; pagal individualų planą jos gali būti teikiamos kelis kartus per dieną.</span></div>
-        <div class="fact"><b>👥 Kas gali atvykti?</b><span>Gydytojas, slaugytojas, slaugytojo padėjėjas, socialinis darbuotojas, medicinos psichologas ar kineziterapeutas – pagal poreikį.</span></div>
-        <div class="fact"><b>☎️ Būtina žinoti</b><span>Koks komandos telefono numeris, kada juo skambinti ir ką daryti naktį ar savaitgalį, jei būklė staiga pasikeičia.</span></div>
-        <div class="fact"><b>🧰 Priemonės</b><span>Paklauskite, kokių slaugos priemonių, pragulų prevencijos, deguonies ar kitos įrangos konkrečiai reikia ir kas ją paskiria / organizuoja.</span></div>
-      </div>
-      <div class="warn" style="margin-top:9px">Paliatyvioji pagalba namuose ir ambulatorinės slaugos paslaugos namuose nėra ta pati paslauga. Kuri pagalbos forma tinkama, sprendžia specialistai pagal paciento būklę.</div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">💊</div><div><strong>3. Turėti konkretų simptomų valdymo planą</strong><span>Ne tik „vartoti vaistus pagal poreikį“</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="info-list">
-        <div class="info-item"><strong>Skausmas</strong><span>Kokius vaistus vartoti reguliariai, ką daryti prasiveržus skausmui ir kada skambinti komandai.</span></div>
-        <div class="info-item"><strong>Dusulys</strong><span>Kokie veiksmai ir vaistai skirti konkrečiam pacientui, kada reikalinga skubi pagalba.</span></div>
-        <div class="info-item"><strong>Pykinimas / vėmimas</strong><span>Kokius paskirtus vaistus naudoti ir kada nebegalėjimas gerti tampa priežastimi kreiptis.</span></div>
-        <div class="info-item"><strong>Vidurių užkietėjimas</strong><span>Ypač vartojant opioidus turi būti aiškus gydytojo ar slaugytojo sudarytas planas.</span></div>
-        <div class="info-item"><strong>Nerimas, nemiga, sumišimas</strong><span>Naujas sumišimas ar stiprus neramumas turi būti aptartas su komanda – priežasčių gali būti daug ir dalis jų gydomos.</span></div>
-        <div class="info-item"><strong>Oda, pragulų rizika, burnos priežiūra</strong><span>Slaugytojas gali parodyti, kaip prižiūrėti ir kokių priemonių reikia būtent jūsų artimajam.</span></div>
-      </div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🧑‍🤝‍🧑</div><div><strong>4. Susitarti dėl artimojo vaidmens</strong><span>Ką darote jūs, o ką turi padaryti specialistai</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="check">
-        <div>✓ Kas atsakingas už vaistus ir receptų pratęsimą?</div>
-        <div>✓ Kas prižiūri žaizdas, stomą, kateterį ar kitas priemones?</div>
-        <div>✓ Kas vertina simptomus, jei jie pasikeičia?</div>
-        <div>✓ Kas organizuoja socialines paslaugas ar pagalbą namuose?</div>
-        <div>✓ Kas pakeis artimąjį, jei jis nebegali būti šalia visą parą?</div>
-      </div>
-      <div class="warn" style="margin-top:9px"><b>Artimasis neturi tapti „nemokama visos sistemos pamaina“.</b> Paliatyviosios pagalbos planas turi apimti realią profesionalią pagalbą, o ne tik nurodymą šeimai „prižiūrėti namuose“.</div>
-    </div>
-  </details>
-
-  <details class="accord">
-    <summary><div class="ico">🛏️</div><div><strong>5. Kada svarstyti dienos stacionarą ar stacionarą?</strong><span>Jei namuose darosi per sunku arba simptomų nepavyksta kontroliuoti</span></div><div>⌄</div></summary>
-    <div class="body">
-      <div class="info-list">
-        <div class="info-item"><strong>Simptomai sunkiai valdomi namuose</strong><span>Skausmas, dusulys, pykinimas, sumišimas ar kiti simptomai nepaisant sudaryto plano.</span></div>
-        <div class="info-item"><strong>Reikia dažnesnių procedūrų ar stebėjimo</strong><span>Komanda gali spręsti dėl dienos stacionaro ar stacionarinės paliatyviosios pagalbos.</span></div>
-        <div class="info-item"><strong>Šeima fiziškai nebegali užtikrinti saugios priežiūros</strong><span>Pasakykite tai specialistams tiesiai. Tai yra svarbi priežiūros plano dalis, o ne artimojo „nesugebėjimas“.</span></div>
-      </div>
-    </div>
-  </details>
-</div>
-
-<div class="card">
-  <h3>Ką galite padaryti jūs, kaip artimasis?</h3>
-  <div class="check">
-    <div>✅ Turėkite vieną lapą / užrašą su visais vaistais ir jų paskirtimi.</div>
-    <div>✅ Užsirašykite pagrindinį paliatyviosios komandos telefono numerį.</div>
-    <div>✅ Paprašykite aiškaus plano „ką daryti, jei...“ dėl skausmo, dusulio, pykinimo, neramumo ar kitų aktualių simptomų.</div>
-    <div>✅ Pasakykite komandai, kiek realiai galite prižiūrėti – valandomis, naktimis, fiziškai ir emociškai.</div>
-    <div>✅ Paklauskite apie socialinį darbuotoją ir atokvėpio galimybes, jei šeima išsekusi.</div>
-    <div>✅ Jei pacientas gali ir nori – aptarkite jo prioritetus: kur jis norėtų būti, ko labiausiai bijo, kas jam šiuo metu svarbiausia.</div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Ko paklausti šiame etape?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>„Ar mano artimajam jau tinka paliatyviosios pagalbos kriterijai?“</strong><span>Jei taip – kas išrašys siuntimą?</span></div>
-    <div class="info-item"><strong>„Ar pagalba gali būti teikiama namuose?“</strong><span>Kuri įstaiga ją užtikrins ir nuo kada?</span></div>
-    <div class="info-item"><strong>„Kas konkrečiai sudarys mūsų komandą?“</strong><span>Gydytojas, slaugytojas, socialinis darbuotojas, psichologas, kineziterapeutas?</span></div>
-    <div class="info-item"><strong>„Koks yra 24 valandų planas, jei simptomai pablogėja?“</strong><span>Kam skambinti dieną, vakare, naktį ir savaitgalį?</span></div>
-    <div class="info-item"><strong>„Kokį planą turime dėl skausmo ir kitų simptomų?“</strong><span>Kokie paskirti vaistai, kada juos vartoti ir kada kreiptis?</span></div>
-    <div class="info-item"><strong>„Ar mums priklauso socialinio darbuotojo / psichologo pagalba?“</strong><span>Kaip su jais susisiekti?</span></div>
-    <div class="info-item"><strong>„Kada jau reikėtų svarstyti stacionarinę paliatyviąją pagalbą?“</strong><span>Kokie požymiai rodo, kad priežiūra namuose nebėra pakankama ar saugi?</span></div>
-    <div class="info-item"><strong>„Kokio atokvėpio gali gauti prižiūrintis artimasis?“</strong><span>Kas įvertina socialinių paslaugų poreikį?</span></div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Kada skambinti skubiai?</h3>
-  <div class="info-list">
-    <div class="info-item"><strong>☎️ Paliatyviosios pagalbos komandai</strong><span>Kai skausmas ar dusulys nebekontroliuojami pagal sudarytą planą, žmogus nebegali nuryti vaistų, kartotinai vemia, atsiranda naujas ryškus sumišimas, kraujavimas ar kitas staigus būklės pokytis.</span></div>
-    <div class="info-item"><strong>🚑 112</strong><span>Jei kyla akivaizdi grėsmė gyvybei ir nėra iš anksto suderinto kitokio gydymo plano: labai sunkus kvėpavimas, sąmonės netekimas, traukuliai, gausus nekontroliuojamas kraujavimas ar kita kritinė būklė.</span></div>
-  </div>
-  <div class="warn" style="margin-top:9px">Pažengusios ligos atveju labai svarbu su gydytoju iš anksto aptarti, kokių intervencijų pacientas nori ir koks yra jo individualus skubios pagalbos planas. Programėlė to sprendimo nepakeičia.</div>
-</div>
-
-<div class="card source">
-  <h3>Oficialūs šaltiniai</h3>
-  <div class="check">
-    <div>↗ <a href="https://sam.lrv.lt/lt/dazniausiai-uzduodami-klausimai-duk-1/" target="_blank" rel="noopener">SAM – paliatyviosios pagalbos DUK</a></div>
-    <div>↗ <a href="https://e-seimas.lrs.lt/portal/legalActEditions/lt/TAD/TAIS.291106" target="_blank" rel="noopener">E. Seimas – paliatyviosios pagalbos paslaugų teikimo reikalavimai (V-14)</a></div>
-    <div>↗ <a href="https://e-seimas.lrs.lt/rs/actualedition/00100e2027ff11eea0b6cad9848a9596/MWiBFdwlBe/" target="_blank" rel="noopener">E. Seimas – integruotos pagalbos ir atokvėpio paslaugų sąlygos</a></div>
-  </div>
-  <div class="small" style="margin-top:9px">Turinio peržiūros data: 2026-10-05.</div>
-</div>
-</section>
-
-<section id="home" class="screen"><div class="card"><h2>Ką reikia išspręsti?</h2><div class="small">Pasirinkite problemą, dėl kurios šiandien ieškote atsakymo.</div><div class="grid" style="margin-top:11px"><button class="tile" data-screen="work"><div class="art">💼</div><strong>Darbas ir „išeigės“</strong><span>Ar galiu dirbti? Kur kreiptis?</span></button><button class="tile" data-screen="transport"><div class="art">🚗</div><strong>Pavėžėjimas</strong><span>Numeriai, registracija, kiek priklauso</span></button><button class="tile" data-screen="benefits"><div class="art">🪙</div><strong>Išmokos ir lengvatos</strong><span>Kas priklauso pacientui ar artimajam</span></button><button class="tile" data-screen="homecare"><div class="art">🏠</div><strong>Pagalba namuose</strong><span>Slauga, socialinė pagalba, atokvėpis</span></button><button class="tile" data-screen="emotions"><div class="art">🫶</div><strong>Emocinė pagalba</strong><span>Kai per sunku, pykčiai, išsekimas</span></button><button class="tile" data-screen="contacts"><div class="art">☎️</div><strong>Mano kontaktai</strong><span>Visi svarbūs numeriai vienoje vietoje</span></button></div></div><div class="notice">Rūpinimasis artimuoju irgi yra darbas. Pagalbos ieškojimas nėra silpnumas.</div></section>
-
-<section id="work" class="screen"><div class="card"><h2>Darbas ir „išeigės“</h2><div class="info-list"><div class="info-item"><strong>Ar galiu dirbti, jei slaugau?</strong><span>Kokiais atvejais galima derinti darbą ir slaugą bei kokių garantijų klausti darbdavio.</span></div><div class="info-item"><strong>Kur kreiptis dėl nedarbingumo / slaugos?</strong><span>Gydytojas → dokumentai → darbdavys / „Sodra“.</span></div><div class="info-item"><strong>Ar priklauso papildomas poilsis?</strong><span>Tikrinama pagal konkrečią šeimos ir darbo situaciją.</span></div><div class="info-item"><strong>Kokius dokumentus turėti?</strong><span>Trumpas kontrolinis sąrašas, kad nereikėtų ieškoti keliuose puslapiuose.</span></div></div></div></section>
-<section id="transport" class="screen"><div class="card"><h2>Pavėžėjimas ir pagalba</h2><div class="info-list"><div class="info-item"><strong>📞 Pavėžėjimo numeriai</strong><span>Oficialus registracijos numeris ir alternatyvūs kontaktai.</span></div><div class="info-item"><strong>🗓 Kiek kartų priklauso?</strong><span>Priklauso nuo nustatytų kriterijų ir konkrečios situacijos.</span></div><div class="info-item"><strong>📋 Kur registruotis?</strong><span>Kada skambinti, ko paklaus ir ką turėti.</span></div></div></div></section>
-<section id="benefits" class="screen"><div class="card"><h2>Išmokos ir lengvatos</h2><div class="info-list"><div class="info-item"><strong>Paciento išmokos / kompensacijos</strong><span>Kas gali priklausyti pagal individualią situaciją.</span></div><div class="info-item"><strong>Slaugančio artimojo teisės</strong><span>Darbo, slaugos ir socialinės garantijos.</span></div><div class="info-item"><strong>Techninės pagalbos priemonės</strong><span>Kur kreiptis ir kas jas skiria.</span></div></div><div class="notice" style="margin-top:10px">Konkrečios teisės priklauso nuo kriterijų – programa neturi pažadėti išmokos automatiškai.</div></div></section>
-<section id="homecare" class="screen"><div class="card"><h2>Pagalba namuose</h2><div class="info-list"><div class="info-item"><strong>Slauga namuose</strong><span>Kas gali ją skirti ir kur kreiptis.</span></div><div class="info-item"><strong>Socialinė pagalba</strong><span>Pagalba buityje, maistas, higiena, palydėjimas.</span></div><div class="info-item"><strong>Atokvėpis artimajam</strong><span>Kur ieškoti pagalbos, kai slaugantis žmogus turi pailsėti.</span></div><div class="info-item"><strong>Kas gali pavaduoti?</strong><span>Susidėliokite savo pagalbos žmonių ratą.</span></div></div></div></section>
-
-<section id="path" class="screen"><div class="card"><h2>Kur dabar yra jūsų artimasis?</h2><label>Onkologinio kelio etapas</label><select id="stage"><option value="tests">Laukiame tyrimų</option><option value="hist">Laukiame histologijos</option><option value="confirmed">Diagnozė patvirtinta</option><option value="mdt">Laukiame konsiliumo</option><option value="treat">Vyksta gydymas</option><option value="follow">Stebėjimas / kontrolė</option></select></div><div class="card"><h3>Dabar svarbiausia</h3><div id="nextAction"></div><div class="progress"><span id="bar"></span></div><div id="pct" class="small"></div></div><div id="steps" class="route"></div></section>
-
-<section id="emotions" class="screen"><div class="card"><h2>Kaip laikotės jūs?</h2><div class="small">Ši dalis skirta ne pacientui, o jums.</div><div class="route" style="margin-top:12px"><div class="stop"><h4>Man sunku dėl artimojo elgesio</h4><p>Pyksta, šaukia, atstumia, pasikeitė santykiai.</p></div><div class="stop"><h4>Jaučiuosi išsekęs / išsekusi</h4><p>Atrodo, kad viską nešu vienas / viena.</p></div><div class="stop"><h4>Noriu su kuo nors pasikalbėti</h4><p>Psichologinė pagalba, pacientų organizacijos, artimųjų grupės.</p></div></div></div></section>
-
-<section id="contacts" class="screen"><div class="card"><h2>Mano kontaktai</h2><div id="contactFields"></div><button id="saveContacts" class="btn">Išsaugoti šiame prototipe</button></div></section>
 </main>
-<nav class="bottom"><button class="active" data-screen="start"><b>⌂</b>Pradžia</button><button data-screen="home"><b>▦</b>Pagalba</button><button data-screen="path"><b>➝</b>Kelias</button><button data-screen="emotions"><b>♡</b>Savijauta</button><button data-screen="contacts"><b>☎</b>Kontaktai</button></nav>
-</div>
+
 <script>
-const appState=()=>{try{return JSON.parse(localStorage.getItem('saliaOnkoProto')||'{}')}catch{return {}}};const saveState=s=>localStorage.setItem('saliaOnkoProto',JSON.stringify(s));let S=appState();
-function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id)?.classList.add('active');document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));window.scrollTo({top:0,behavior:'smooth'})}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-screen]');if(b)show(b.dataset.screen)});
-document.querySelectorAll('[data-stage-start]').forEach(b=>b.onclick=()=>{S=appState();S.caregiverStage=b.dataset.stageStart;saveState(S);document.querySelectorAll('[data-stage-start]').forEach(x=>x.classList.toggle('sel',x===b));const direct={suspected:'suspected',confirmed:'confirmed',treatment:'treatment',follow:'follow',progression:'progression',palliative:'palliative'};if(direct[b.dataset.stageStart]){show(direct[b.dataset.stageStart]);return;}show('path');const map={endoflife:'treat',bereavement:'follow'};if(map[b.dataset.stageStart]){document.getElementById('stage').value=map[b.dataset.stageStart];renderPath()}});
-if(S.caregiverStage)document.querySelector(`[data-stage-start="${S.caregiverStage}"]`)?.classList.add('sel');
-const pathData={tests:[["Žinokite, kokio tyrimo laukiate","Kas tikslinama ir kur vykti?"],["Turėkite datą ir vietą","Užsirašykite laiką ir pasiruošimą."],["Žinokite, kas praneš rezultatą","Kas ir kada susisieks?"],["Turėkite atsarginį kontaktą","Kam skambinti, jei niekas nepaskambino?"]],hist:[["Žinokite orientacinę atsakymo datą","Kad laukimas nebūtų be termino."],["Žinokite, kas paaiškins rezultatą","Kas aptars histologiją?"],["Pasiruoškite klausimus","Ką norėsite sužinoti gavę atsakymą?"]],confirmed:[["Supraskite diagnozę","Paprašykite paaiškinti paprastai."],["Sužinokite kitą žingsnį","Papildomi tyrimai, konsiliumas ar gydymas?"],["Turėkite pagrindinį kontaktą","Kas padės orientuotis?"]],mdt:[["Sužinokite konsiliumo datą","Kada atvejis bus aptartas?"],["Žinokite, kaip gausite sprendimą","Kas ir kada susisieks?"],["Užrašykite kitą veiksmą","Vizitas, operacija ar gydymo pradžia."]],treat:[["Žinokite gydymo planą","Datos ir vietos."],["Stebėkite savijautą","Kokie simptomai svarbūs?"],["Turėkite kontaktą","Kam skambinti tarp vizitų?"],["Pasidalinkite darbus","Kas gali padėti artimajam?"]],follow:[["Žinokite kontrolės planą","Kokie tyrimai ir kaip dažnai?"],["Turėkite kitą datą","Kada kontrolinis vizitas?"],["Žinokite, kada kreiptis anksčiau","Kokie simptomai svarbūs?"]]};
-function renderPath(){const st=document.getElementById('stage').value,arr=pathData[st]||[],statuses=appState().statuses||{},wrap=document.getElementById('steps');wrap.innerHTML='';arr.forEach((a,i)=>{const key=st+'_'+i,v=statuses[key]||'',el=document.createElement('div');el.className='stop';el.innerHTML=`<h4>${i+1}. ${a[0]}</h4><p>${a[1]}</p><div class="states"><button data-k="${key}" data-v="unknown" class="${v==='unknown'?'sel':''}">Nežinau</button><button data-k="${key}" data-v="know" class="${v==='know'?'sel':''}">Žinau</button><button data-k="${key}" data-v="done" class="${v==='done'?'sel':''}">Atlikta ✓</button></div>`;wrap.appendChild(el)});document.querySelectorAll('.states button').forEach(b=>b.onclick=()=>{S=appState();S.statuses=S.statuses||{};S.statuses[b.dataset.k]=b.dataset.v;saveState(S);renderPath()});let done=0,next=null,idx=0;arr.forEach((a,i)=>{const v=statuses[st+'_'+i];if(v==='done')done++;if(next===null&&v!=='done'){next=a;idx=i}});const pct=arr.length?Math.round(done/arr.length*100):0;document.getElementById('bar').style.width=pct+'%';document.getElementById('pct').textContent=pct+' % atlikta';document.getElementById('nextAction').innerHTML=next?`<strong>${idx+1}. ${next[0]}</strong><br><span class="small">${next[1]}</span>`:'<strong>Šio etapo žingsniai atlikti.</strong>'}
-document.getElementById('stage').onchange=renderPath;renderPath();
-const names=['Gydantis gydytojas / skyrius','Šeimos gydytojas','Slaugytojas / navigatorius','Socialinis darbuotojas','Pavėžėjimas','POLA','Artimasis / pavaduojantis žmogus'];function renderContacts(){const s=appState(),w=document.getElementById('contactFields');w.innerHTML='';names.forEach((n,i)=>w.innerHTML+=`<label>${n}</label><input data-c="${i}" value="${(s.contacts||[])[i]||''}" placeholder="Vardas / telefonas">`)}renderContacts();document.getElementById('saveContacts').onclick=()=>{S=appState();S.contacts=[...document.querySelectorAll('[data-c]')].map(x=>x.value);saveState(S);alert('Išsaugota šiame naršyklės prototipe.')};
+const diagnoses = [
+  // CHIRURGIJA
+  {sp:"Chirurgija", group:"Tulžies pūslė ir latakai", code:"K80", name:"Tulžies pūslės akmenligė", procedures:["Laparoskopinė cholecistektomija","Atvira cholecistektomija"]},
+  {sp:"Chirurgija", group:"Tulžies pūslė ir latakai", code:"K81", name:"Cholecistitas", procedures:["Laparoskopinė cholecistektomija","Atvira cholecistektomija"]},
+  {sp:"Chirurgija", group:"Ūminė pilvo chirurgija", code:"K35", name:"Ūminis apendicitas", procedures:["Laparoskopinė apendektomija","Atvira apendektomija"]},
+  {sp:"Chirurgija", group:"Pilvo sienos chirurgija", code:"K40–K43", name:"Kirkšnies / šlaunies / bambos / pilvo sienos išvaržos", procedures:["Išvaržos plastika"]},
+  {sp:"Chirurgija", group:"Žarnyno chirurgija", code:"K56", name:"Žarnų nepraeinamumas / obstrukcija", procedures:["Laparotomija dėl žarnų nepraeinamumo","Storosios žarnos rezekcija"]},
+  {sp:"Chirurgija", group:"Žarnyno chirurgija", code:"K57", name:"Žarnų divertikulinė liga", procedures:["Storosios žarnos rezekcija","Stomos suformavimas / priežiūra"]},
+  {sp:"Chirurgija", group:"Kolorektalinė chirurgija", code:"C18", name:"Storosios žarnos piktybinis navikas", procedures:["Storosios žarnos rezekcija","Stomos suformavimas / priežiūra"]},
+  {sp:"Chirurgija", group:"Kolorektalinė chirurgija", code:"C20", name:"Tiesiosios žarnos piktybinis navikas", procedures:["Tiesiosios žarnos rezekcija","Stomos suformavimas / priežiūra"]},
+  {sp:"Chirurgija", group:"Anorektalinė chirurgija", code:"K64", name:"Hemorojus ir perianalinė veninė trombozė", procedures:["Hemoroidektomija"]},
+  {sp:"Chirurgija", group:"Skrandžio chirurgija", code:"C16", name:"Skrandžio piktybinis navikas", procedures:["Dalinė / subtotalinė gastrektomija","Totalinė gastrektomija"]},
+  {sp:"Chirurgija", group:"Kepenų chirurgija", code:"C22", name:"Kepenų ir intrahepatinių tulžies latakų piktybinis navikas", procedures:["Kepenų rezekcija"]},
+  {sp:"Chirurgija", group:"Kasos chirurgija", code:"C25", name:"Kasos piktybinis navikas", procedures:["Kasos rezekcija / pankreatoduodenektomija"]},
+  {sp:"Chirurgija", group:"Krūties chirurgija", code:"C50", name:"Krūties piktybinis navikas", procedures:["Krūtį tausojanti operacija","Mastektomija ± limfmazgių operacija"]},
+  {sp:"Chirurgija", group:"Endokrininė chirurgija", code:"C73", name:"Skydliaukės piktybinis navikas", procedures:["Tiroidektomija / hemitiroidektomija"]},
+  {sp:"Chirurgija", group:"Endokrininė chirurgija", code:"E04", name:"Netoksinis gūžys / skydliaukės mazginė liga", procedures:["Tiroidektomija / hemitiroidektomija"]},
+
+  // UROLOGIJA
+  {sp:"Urologija", group:"Onkourologija", code:"C67", name:"Šlapimo pūslės piktybinis navikas", procedures:["TURBT / TURB","Cistoskopija","Intravezikinė BCG terapija"]},
+  {sp:"Urologija", group:"Onkourologija", code:"C61", name:"Prostatos piktybinis navikas", procedures:["Radikali prostatektomija","Prostatos biopsija"]},
+  {sp:"Urologija", group:"Akmenligė", code:"N20", name:"Inksto ir šlapimtakio akmuo", procedures:["URS","PCNL","ESWL","JJ ureterinis stentas"]},
+  {sp:"Urologija", group:"Prostata", code:"N40", name:"Prostatos hiperplazija", procedures:["TURP","Cistostoma / suprapubinis kateteris"]},
+  {sp:"Urologija", group:"Obstrukcija", code:"N13", name:"Obstrukcinės uropatijos / hidronefrozės grupė", procedures:["Nefrostoma","JJ ureterinis stentas","URS"]},
+  {sp:"Urologija", group:"Onkourologija", code:"C64", name:"Inksto piktybinis navikas", procedures:["Nefrektomija / dalinė nefrektomija"]},
+  {sp:"Urologija", group:"Onkourologija", code:"C62", name:"Sėklidės piktybinis navikas", procedures:["Orchiektomija"]},
+  {sp:"Urologija", group:"Kapšelio chirurgija", code:"N43", name:"Hidrocelė", procedures:["Hidrocelės operacija"]},
+  {sp:"Urologija", group:"Varpos chirurgija", code:"N47", name:"Apyvarpės sutrikimų grupė", procedures:["Cirkumcizija / apyvarpės operacija"]}
+];
+
+const problemLibrary = {
+ pain:{t:"Ūmus skausmas",g:"Skausmas sumažės iki pacientui toleruojamo lygio.",a:["Įvertinti skausmą pagal NRS.","Stebėti skausmo lokalizaciją, pobūdį ir dinamiką.","Vykdyti paskirtas skausmo mažinimo priemones.","Pakartotinai įvertinti poveikį po intervencijos."],e:"Skausmas sumažėjęs / toleruojamas."},
+ infection:{t:"Infekcijos rizika",g:"Nebus naujų vietinių ar sisteminių infekcijos požymių.",a:["Stebėti temperatūrą ir bendrą būklę.","Vertinti operacinę žaizdą / įvedimo vietą, jei aktualu.","Laikytis aseptikos principų.","Dokumentuoti ir perduoti reikšmingus pokyčius."],e:"Naujų infekcijos požymių nenustatyta."},
+ nausea:{t:"Pykinimas / vėmimas",g:"Pykinimas ir vėmimas sumažės, bus palaikomas skysčių balansas.",a:["Vertinti pykinimo intensyvumą.","Registruoti vėmimo epizodus ir pobūdį.","Stebėti skysčių balansą.","Vykdyti paskirtą gydymą ir vertinti jo poveikį."],e:"Pykinimas sumažėjęs, vėmimas nepasikartoja / retėja."},
+ mobility:{t:"Sumažėjęs mobilumas",g:"Pacientas saugiai didins fizinį aktyvumą pagal būklę.",a:["Įvertinti mobilumo lygį ir pagalbos poreikį.","Skatinti ankstyvą saugią mobilizaciją.","Stebėti silpnumą ir ortostatinę reakciją.","Dokumentuoti mobilumo progresą."],e:"Pacientas mobilizuojasi saugiai pagal galimybes."},
+ bowel:{t:"Žarnyno veiklos sutrikimo rizika",g:"Žarnyno funkcija palaipsniui atsistatys pagal pooperacinę eigą.",a:["Stebėti pilvo pūtimą ir skausmą.","Stebėti dujų / išmatų pasišalinimą.","Stebėti pykinimą ir vėmimą.","Skatinti mobilizaciją pagal būklę."],e:"Žarnyno veikla atsistato pagal pooperacinę eigą."},
+ fluid:{t:"Skysčių balanso sutrikimo rizika",g:"Bus palaikomas ir stebimas adekvatus skysčių balansas.",a:["Registruoti suvartotus ir išskirtus skysčius.","Stebėti diurezę.","Vertinti gyvybinius rodiklius ir dehidratacijos požymius.","Stebėti drenų / stomos / zondo išskyras, jei taikoma."],e:"Skysčių balansas stebimas, reikšmingi nukrypimai perduoti."},
+ bleeding:{t:"Kraujavimo rizika / kraujavimo stebėjimo poreikis",g:"Kraujavimo požymiai bus laiku pastebėti, paciento būklė išliks stabili.",a:["Stebėti operacinę sritį, drenų ar kitų išskyrų pobūdį.","Vertinti gyvybinius rodiklius pagal būklę.","Stebėti ryškėjančius kraujavimo požymius.","Apie reikšmingus pokyčius informuoti atsakingą gydytoją."],e:"Aktyvaus kraujavimo požymių nėra / jie nemažėja."},
+ nutrition:{t:"Mitybos toleravimo sutrikimo rizika",g:"Pacientas toleruos paskirtą maistą ir skysčius pagal gydymo planą.",a:["Vertinti maisto ir skysčių toleravimą.","Stebėti pykinimą, pilvo pūtimą ir skausmą.","Mitybą atnaujinti pagal gydymo planą.","Dokumentuoti netoleravimo požymius."],e:"Pacientas toleruoja paskirtą maistą / skysčius."},
+ knowledge:{t:"Žinių apie pooperacinę priežiūrą trūkumas",g:"Pacientas gebės paaiškinti pagrindines savipriežiūros ir saugumo rekomendacijas.",a:["Paaiškinti priežiūros principus pagal konkrečią operaciją / procedūrą.","Aptarti įspėjamuosius simptomus.","Patikrinti paciento supratimą teach-back principu.","Pateikti rašytinę informaciją, jei prieinama."],e:"Pacientas pakartoja svarbiausias rekomendacijas."},
+ respiratory:{t:"Kvėpavimo komplikacijų rizika",g:"Kvėpavimas išliks pakankamas, pacientas gebės atlikti rekomenduojamus kvėpavimo veiksmus.",a:["Stebėti kvėpavimo dažnį ir SpO₂ pagal būklę.","Skatinti gilaus kvėpavimo pratimus pagal paciento būklę.","Užtikrinti adekvačią analgeziją pagal paskyrimą.","Skatinti mobilizaciją pagal būklę."],e:"Kvėpavimo būklė stabili."},
+ drain:{t:"Dreno priežiūros poreikis",g:"Drenas išliks saugiai fiksuotas ir funkcionuos.",a:["Stebėti dreno fiksaciją ir neužlinkimą.","Vertinti išskyrų kiekį, spalvą ir pobūdį.","Vertinti įvedimo vietos būklę.","Dokumentuoti dreno turinio pokyčius."],e:"Drenas funkcionuoja, įvedimo vieta be naujų komplikacijų požymių."},
+ catheter:{t:"Kateterio / drenavimo sistemos priežiūros poreikis",g:"Sistema bus praeinama, saugiai fiksuota ir funkcionuos.",a:["Stebėti šlapimo nutekėjimą ir pobūdį.","Patikrinti sistemos fiksaciją ir neužlinkimą.","Stebėti įvedimo vietą, jei aktualu.","Mokyti pacientą saugiai prižiūrėti sistemą."],e:"Sistema funkcionuoja, pacientas supranta priežiūros principus."},
+ urinary:{t:"Šlapimo nutekėjimo sutrikimo rizika",g:"Šlapimo nutekėjimas išliks pakankamas.",a:["Stebėti diurezę ir šlapimo tekėjimą.","Vertinti retencijos / pūslės tempimo požymius.","Patikrinti drenavimo sistemos praeinamumą, jei ji yra.","Apie staigius pokyčius informuoti atsakingą specialistą."],e:"Šlapimo nutekėjimas pakankamas, retencijos požymių nėra."},
+ hematuria:{t:"Hematurija / kraujavimo iš šlapimo takų stebėjimo poreikis",g:"Hematurija neprogresuos, reikšmingi pokyčiai bus laiku pastebėti.",a:["Stebėti šlapimo spalvą ir skaidrumą.","Vertinti krešulių atsiradimą.","Stebėti diurezę.","Informuoti apie gausėjantį kraujavimą ar nutekėjimo sutrikimą."],e:"Hematurija mažėja / neprogresuoja, būklė stabili."},
+ stoma:{t:"Stomos savipriežiūros poreikis",g:"Pacientas / artimasis gebės atlikti pagrindinius stomos priežiūros veiksmus.",a:["Vertinti stomos spalvą, drėgnumą ir išskyras.","Mokyti ištuštinti ir pakeisti stomos rinktuvą.","Vertinti peristominę odą.","Įtraukti pacientą į priežiūrą palaipsniui."],e:"Pacientas / artimasis demonstruoja pagrindinius priežiūros veiksmus."},
+ periskin:{t:"Peristominės odos pažeidimo rizika",g:"Peristominė oda išliks nepažeista.",a:["Stebėti paraudimą, maceraciją ir nuotėkį.","Vertinti rinktuvo prigludimą.","Mokyti odos apsaugos principų.","Dokumentuoti odos būklę."],e:"Peristominė oda nepažeista / būklė gerėja."},
+ bodyimage:{t:"Kūno vaizdo / emocinio prisitaikymo sunkumai",g:"Pacientas turės galimybę aptarti rūpesčius ir žinos pagalbos galimybes.",a:["Užtikrinti privatumą ir pagarbų bendravimą.","Išklausyti paciento klausimus be vertinimo.","Suteikti informaciją pagal kompetenciją.","Prireikus nukreipti kito specialisto konsultacijai."],e:"Pacientas išsako rūpesčius ir žino pagalbos galimybes."},
+ anxiety:{t:"Nerimas",g:"Paciento nerimas sumažės, jis supras tolesnį planą.",a:["Įvertinti paciento nerimo lygį ir pagrindinius rūpesčius.","Paaiškinti procedūrų ir priežiūros eigą pagal kompetenciją.","Sudaryti galimybę užduoti klausimus.","Suteikti emocinį palaikymą."],e:"Pacientas geriau supranta planą, nerimas sumažėjęs."},
+ lymphedema:{t:"Rankos tinimo / limfinės sistemos komplikacijų rizika",g:"Pacientas žinos operuotos pusės rankos stebėjimo ir saugaus aktyvumo principus.",a:["Vertinti rankos tinimą, skausmą ir judesių amplitudę.","Skatinti paskirtus saugius rankos pratimus.","Mokyti stebėti naujus tinimo ar tempimo simptomus.","Prireikus nukreipti reabilitacijos / limfedemos specialisto konsultacijai."],e:"Pacientas supranta rankos priežiūros ir simptomų stebėjimo principus."},
+ airway:{t:"Kvėpavimo takų / kaklo srities komplikacijų stebėjimo poreikis",g:"Kvėpavimo būklės ar kaklo srities blogėjimas bus atpažintas nedelsiant.",a:["Stebėti kvėpavimą ir SpO₂ pagal būklę.","Vertinti kaklo patinimą, kraujavimo ar spaudimo pojūtį.","Stebėti balso pokyčius.","Nedelsiant perduoti informaciją apie ūmų būklės blogėjimą."],e:"Kvėpavimo būklė stabili, ūmių komplikacijų požymių nėra."},
+ calcium:{t:"Kalcio pusiausvyros pokyčio rizika po skydliaukės operacijos",g:"Galimi hipokalcemijos simptomai bus laiku atpažinti.",a:["Stebėti perioralinį ar galūnių dilgčiojimą, mėšlungį ar spazmus.","Stebėti laboratorinius rodiklius pagal paskyrimą.","Vykdyti paskirtą gydymą.","Apie simptomų atsiradimą nedelsiant informuoti gydytoją."],e:"Naujų hipokalcemijos simptomų nenustatyta / jie perduoti ir įvertinti."},
+ glucose:{t:"Gliukozės kontrolės poreikis po kasos operacijos",g:"Gliukozės pokyčiai bus laiku pastebėti ir valdomi pagal paskyrimą.",a:["Stebėti gliukozę pagal paskyrimą.","Stebėti hipoglikemijos / hiperglikemijos simptomus.","Vykdyti paskirtą gydymą.","Dokumentuoti reikšmingus pokyčius."],e:"Gliukozės rodikliai stebimi, reikšmingi pokyčiai perduoti."}
+};
+
+const procedures = {
+ "Laparoskopinė cholecistektomija":{tag:"Chirurgija",problems:["pain","nausea","infection","mobility","nutrition","knowledge"],assessment:["Gyvybiniai rodikliai ir bendra būklė.","Skausmas pagal NRS.","Pykinimas / vėmimas.","Pilvo būklė ir žarnyno veikla.","Operacinių žaizdelių / tvarsčių būklė.","Maisto ir skysčių toleravimas.","Mobilumas."],education:["Aptarti žaizdų priežiūrą ir fizinio aktyvumo ribas pagal gydymo planą.","Aptarti mitybos grįžimą ir individualias rekomendacijas.","Paaiškinti, kada kreiptis dėl karščiavimo, stiprėjančio pilvo skausmo, nuolatinio vėmimo ar žaizdos pokyčių."]},
+ "Atvira cholecistektomija":{tag:"Chirurgija",problems:["pain","infection","respiratory","nausea","drain","mobility","knowledge"],assessment:["ABCDE vertinimas po operacijos.","Skausmas pagal NRS.","Kvėpavimo dažnis ir SpO₂.","Žaizdos ir dreno būklė, jei drenas yra.","Pilvo ir žarnyno veikla.","Skysčių balansas.","Mobilumas."],education:["Aptarti žaizdos / dreno priežiūrą, jei taikoma.","Mokyti gilaus kvėpavimo ir saugaus kosėjimo pagal būklę.","Aptarti mitybą, mobilizaciją ir fizinio krūvio ribas."]},
+ "Laparoskopinė apendektomija":{tag:"Chirurgija",problems:["pain","nausea","infection","mobility","bowel","knowledge"],assessment:["Gyvybiniai rodikliai.","Skausmas.","Pilvo skausmo / įtampos dinamika.","Pykinimas / vėmimas.","Žaizdelių būklė.","Žarnyno veikla.","Mobilumas."],education:["Aptarti žaizdos priežiūrą.","Paaiškinti fizinio aktyvumo ribas pagal gydymo planą.","Paaiškinti, kada kreiptis dėl karščiavimo, stiprėjančio pilvo skausmo, vėmimo ar žaizdos pokyčių."]},
+ "Atvira apendektomija":{tag:"Chirurgija",problems:["pain","infection","nausea","mobility","bowel","knowledge"],assessment:["ABCDE vertinimas.","Skausmas.","Žaizdos būklė.","Temperatūra.","Pilvo ir žarnyno veikla.","Mobilumas."],education:["Aptarti žaizdos priežiūrą.","Aptarti mobilizaciją ir fizinio krūvio ribas.","Paaiškinti komplikacijų požymius."]},
+ "Išvaržos plastika":{tag:"Chirurgija",problems:["pain","infection","mobility","bowel","knowledge"],assessment:["Skausmas.","Operacinė žaizda.","Patinimas / hematoma operuotoje srityje.","Mobilumas.","Tuštinimasis.","Šlapinimasis, jei aktualu."],education:["Paaiškinti fizinio krūvio ir svorių kėlimo ribas pagal chirurgo planą.","Aptarti žaizdos priežiūrą.","Aptarti vidurių užkietėjimo prevenciją."]},
+ "Laparotomija dėl žarnų nepraeinamumo":{tag:"Chirurgija",problems:["pain","fluid","bowel","infection","drain","mobility","knowledge"],assessment:["ABCDE vertinimas.","Pilvo skausmas ir pūtimas.","Pykinimas / vėmimas.","NG zondo funkcija, jei taikoma.","Skysčių balansas ir diurezė.","Žaizda / drenai.","Žarnyno veiklos atsistatymas."],education:["Paaiškinti zondo / drenų paskirtį, jei taikoma.","Aptarti mitybos atnaujinimą pagal gydymo planą.","Paaiškinti, kada kreiptis dėl stiprėjančio pilvo skausmo, vėmimo ar karščiavimo."]},
+ "Storosios žarnos rezekcija":{tag:"Chirurgija",problems:["pain","infection","fluid","bowel","mobility","nutrition","stoma","knowledge"],assessment:["ABCDE vertinimas.","Skausmas.","Pilvo būklė ir žarnyno veikla.","Žaizda ir drenai.","Skysčių balansas ir diurezė.","Mitybos toleravimas.","Stoma, jei suformuota.","Mobilumas."],education:["Aptarti žaizdos, dreno ir stomos priežiūrą, jei taikoma.","Aptarti mitybos progresavimą pagal gydymo planą.","Paaiškinti komplikacijų požymius."]},
+ "Tiesiosios žarnos rezekcija":{tag:"Chirurgija",problems:["pain","infection","fluid","bowel","stoma","periskin","bodyimage","mobility","knowledge"],assessment:["Skausmas.","Žaizda ir drenai.","Stomos būklė ir peristominė oda, jei stoma yra.","Žarnyno veikla.","Skysčių balansas.","Mobilumas.","Emocinė būsena ir savipriežiūros gebėjimai."],education:["Mokyti stomos priežiūros, jei taikoma.","Aptarti žaizdos priežiūrą ir fizinį aktyvumą.","Aptarti mitybos ir skysčių rekomendacijas pagal gydymo planą."]},
+ "Stomos suformavimas / priežiūra":{tag:"Chirurgija",problems:["stoma","periskin","fluid","bodyimage","knowledge"],assessment:["Stomos spalva, drėgnumas, edema.","Stomos išskyrų kiekis ir pobūdis.","Peristominės odos būklė.","Rinktuvo prigludimas ir nuotėkis.","Skysčių balansas ir diurezė.","Paciento savipriežiūros gebėjimai ir emocinė būsena."],education:["Mokyti rinktuvo keitimo ir ištuštinimo.","Mokyti saugoti peristominę odą.","Aptarti skysčių ir mitybos rekomendacijas pagal stomos tipą ir gydymo planą.","Paaiškinti, kada kreiptis dėl stomos spalvos pokyčių ar dehidratacijos."]},
+ "Hemoroidektomija":{tag:"Chirurgija",problems:["pain","bleeding","bowel","urinary","knowledge"],assessment:["Skausmas.","Kraujavimas.","Šlapinimasis.","Tuštinimosi pobūdis.","Temperatūra."],education:["Aptarti higieną po tuštinimosi.","Aptarti skysčių ir mitybos rekomendacijas pagal planą.","Paaiškinti, kada kreiptis dėl gausaus kraujavimo, karščiavimo ar šlapimo susilaikymo."]},
+ "Dalinė / subtotalinė gastrektomija":{tag:"Chirurgija",problems:["pain","respiratory","nausea","fluid","nutrition","infection","mobility","knowledge"],assessment:["ABCDE vertinimas.","Skausmas.","Kvėpavimo būklė.","NG zondas, jei taikoma.","Skysčių balansas.","Pilvo ir žarnyno veikla.","Žaizda / drenai.","Mitybos toleravimas."],education:["Paaiškinti mitybos atnaujinimo planą ir mažesnių porcijų principą pagal gydymo komandos rekomendacijas.","Aptarti žaizdos priežiūrą ir fizinį aktyvumą.","Paaiškinti dehidratacijos, vėmimo ar ryškaus silpnumo įspėjamuosius požymius."]},
+ "Totalinė gastrektomija":{tag:"Chirurgija",problems:["pain","respiratory","nausea","fluid","nutrition","infection","mobility","knowledge"],assessment:["ABCDE vertinimas.","Skausmas.","Kvėpavimo būklė.","NG zondas, jei taikoma.","Skysčių balansas.","Pilvo ir žarnyno veikla.","Žaizda / drenai.","Mitybos toleravimas."],education:["Aptarti individualų mitybos planą ir mažų porcijų principą pagal dietologo / gydymo komandos rekomendacijas.","Aptarti žaizdos priežiūrą.","Paaiškinti kontrolinių vizitų ir ilgalaikės mitybos stebėsenos svarbą."]},
+ "Kepenų rezekcija":{tag:"Chirurgija",problems:["pain","bleeding","fluid","respiratory","infection","drain","mobility","knowledge"],assessment:["ABCDE vertinimas.","Skausmas.","Gyvybiniai rodikliai.","Žaizda / drenai.","Kraujavimo požymiai.","Skysčių balansas ir diurezė.","Sąmonės / bendros būklės pokyčiai."],education:["Aptarti žaizdos ir drenų priežiūrą, jei taikoma.","Aptarti fizinio aktyvumo ribojimus ir mitybos rekomendacijas pagal gydymo planą.","Paaiškinti, kada kreiptis dėl karščiavimo, didėjančio silpnumo ar kraujavimo požymių."]},
+ "Kasos rezekcija / pankreatoduodenektomija":{tag:"Chirurgija",problems:["pain","fluid","nutrition","drain","infection","bleeding","glucose","mobility","knowledge"],assessment:["ABCDE vertinimas.","Skausmas.","Skysčių balansas ir diurezė.","Žaizda / drenai ir jų turinys.","Mitybos toleravimas.","Gliukozė pagal paskyrimą.","Žarnyno veikla.","Mobilumas."],education:["Aptarti mitybos planą ir galimą fermentų / gliukozės kontrolės poreikį pagal gydymo komandos nurodymus.","Mokyti stebėti žaizdą ir dreną, jei taikoma.","Paaiškinti įspėjamuosius simptomus."]},
+ "Krūtį tausojanti operacija":{tag:"Chirurgija",problems:["pain","infection","anxiety","mobility","lymphedema","knowledge"],assessment:["Skausmas.","Operacinė žaizda.","Drenas, jei taikoma.","Rankos judesių amplitudė.","Rankos tinimas / tempimo pojūtis.","Emocinė būsena."],education:["Aptarti žaizdos priežiūrą.","Paaiškinti paskirtų rankos pratimų svarbą.","Aptarti rankos tinimo / limfedemos simptomų stebėjimą.","Paaiškinti tolesnių konsultacijų planą."]},
+ "Mastektomija ± limfmazgių operacija":{tag:"Chirurgija",problems:["pain","infection","drain","bodyimage","anxiety","lymphedema","mobility","knowledge"],assessment:["Skausmas.","Žaizda ir dreno turinys.","Rankos judesių amplitudė.","Rankos tinimas / tempimo pojūtis.","Emocinė būsena ir kūno vaizdo klausimai."],education:["Mokyti dreno priežiūros, jei pacientas išvyksta su drenu.","Aptarti paskirtus rankos pratimus ir limfedemos simptomų stebėjimą.","Aptarti žaizdos priežiūrą ir emocinės pagalbos galimybes."]},
+ "Tiroidektomija / hemitiroidektomija":{tag:"Chirurgija",problems:["pain","airway","bleeding","calcium","anxiety","knowledge"],assessment:["Kvėpavimo dažnis ir SpO₂.","Kaklo patinimas ir žaizdos / tvarsčio būklė.","Balso pokyčiai.","Skausmas.","Perioralinis / galūnių dilgčiojimas ar mėšlungis.","Laboratoriniai rodikliai pagal paskyrimą."],education:["Paaiškinti žaizdos priežiūrą.","Aptarti balso, kaklo patinimo ir hipokalcemijos simptomų stebėjimą.","Paaiškinti vaistų ir kontrolės planą pagal gydytojo paskyrimą."]},
+
+ "TURBT / TURB":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Skausmas pagal NRS.","Šlapimo spalva, skaidrumas ir krešuliai.","Diurezė ir šlapimo nutekėjimas.","Kateterio praeinamumas ir fiksacija, jei jis yra.","Gyvybiniai rodikliai.","Paciento žinios apie režimą po procedūros."],education:["Paaiškinti tikėtinus trumpalaikius simptomus ir individualias rekomendacijas.","Aptarti fizinio krūvio ribojimus.","Paaiškinti, kada kreiptis dėl gausėjančio kraujavimo, krešulių, karščiavimo ar šlapimo susilaikymo."]},
+ "Cistoskopija":{tag:"Urologija",problems:["pain","hematuria","infection","knowledge"],assessment:["Skausmas / deginimas šlapinantis.","Hematurija ir krešuliai.","Šlapimo nutekėjimas.","Temperatūra ir bendra savijauta."],education:["Paaiškinti galimus trumpalaikius simptomus po procedūros.","Aptarti individualų skysčių vartojimą.","Paaiškinti, kada kreiptis dėl gausaus kraujavimo, karščiavimo ar šlapimo susilaikymo."]},
+ "Intravezikinė BCG terapija":{tag:"Urologija",problems:["pain","hematuria","infection","knowledge"],assessment:["Šlapinimosi dažnis, skubumas ir skausmas.","Hematurija.","Kūno temperatūra ir šaltkrėtis.","Bendra savijauta ir sisteminės reakcijos požymiai."],education:["Paaiškinti gydymo tikslą ir galimus vietinius simptomus.","Aptarti saugaus elgesio rekomendacijas pagal įstaigos protokolą.","Paaiškinti, kada dėl karščiavimo ar ryškios bendros reakcijos būtina kreiptis skubiai."]},
+ "Radikali prostatektomija":{tag:"Urologija",problems:["pain","catheter","mobility","bowel","anxiety","knowledge"],assessment:["Skausmas.","Foley kateterio praeinamumas ir fiksacija.","Diurezė ir šlapimo pobūdis.","Žaizda / drenai, jei yra.","Mobilumas.","Tuštinimasis.","Paciento klausimai dėl šlapimo nelaikymo ir lytinės funkcijos."],education:["Mokyti Foley kateterio priežiūros.","Aptarti mobilizaciją ir tuštinimosi svarbą.","Aptarti dubens dugno pratimų pradžios laiką pagal gydymo komandos rekomendacijas.","Paaiškinti kateterio pašalinimo / kontrolės planą."]},
+ "Prostatos biopsija":{tag:"Urologija",problems:["pain","bleeding","infection","urinary","anxiety","knowledge"],assessment:["Kraujavimo požymiai pagal biopsijos metodą.","Skausmas ir diskomfortas.","Temperatūra ir šaltkrėtis.","Šlapinimosi sutrikimai / retencija.","Emocinė būsena."],education:["Paaiškinti galimus trumpalaikius simptomus.","Paaiškinti, kada kreiptis dėl karščiavimo, šaltkrėčio, ūmaus šlapimo susilaikymo ar gausaus kraujavimo.","Informuoti apie rezultatų gavimo ir konsultacijos tvarką."]},
+ "URS":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Skausmo lokalizacija ir NRS.","Šlapimo spalva ir hematurija.","Diurezė.","JJ stento simptomai, jei stentas paliktas.","Temperatūra."],education:["Paaiškinti galimus simptomus dėl JJ stento.","Aptarti individualų skysčių vartojimą.","Nurodyti stento kontrolės / pašalinimo planą pagal paskyrimą."]},
+ "PCNL":{tag:"Urologija",problems:["pain","bleeding","infection","catheter","fluid","knowledge"],assessment:["Skausmas.","Nefrostomos / dreno turinio kiekis ir pobūdis.","Šlapimo spalva ir diurezė.","Punkcijos vieta.","Temperatūra.","Nefrostomos fiksacija, jei ji palikta."],education:["Mokyti nefrostomos priežiūros, jei pacientas išvyksta su nefrostoma.","Paaiškinti, kaip saugoti vamzdelį nuo tempimo ir užlinkimo.","Paaiškinti, kada kreiptis dėl iškritimo, nutekėjimo sustojimo, karščiavimo ar kraujavimo."]},
+ "ESWL":{tag:"Urologija",problems:["pain","hematuria","urinary","knowledge"],assessment:["Skausmas.","Šlapimo spalva.","Diurezė.","Akmens fragmentų pasišalinimo simptomai.","Temperatūra."],education:["Aptarti individualų skysčių vartojimą.","Paaiškinti, kada kreiptis dėl stiprėjančio skausmo, karščiavimo ar šlapimo nutekėjimo sutrikimo."]},
+ "JJ ureterinis stentas":{tag:"Urologija",problems:["pain","urinary","hematuria","infection","knowledge"],assessment:["Skausmas.","Šlapinimosi dažnis, skuba ir deginimas.","Hematurija.","Temperatūra.","Stento kontrolės / pašalinimo data."],education:["Paaiškinti dažniausius stento simptomus.","Aptarti kontrolės / pašalinimo planą.","Paaiškinti, kada kreiptis dėl karščiavimo, anūrijos ar stipraus skausmo."]},
+ "TURP":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Šlapimo spalva ir krešuliai.","Kateterio / drenavimo sistemos praeinamumas.","Diurezė.","Pūslės spazmų / tempimo požymiai.","Gyvybiniai rodikliai."],education:["Paaiškinti kateterio priežiūrą, jei pacientas išvyksta su kateteriu.","Aptarti šlapimo spalvos pokyčius ir kada kreiptis.","Paaiškinti šlapimo susilaikymo požymius."]},
+ "Cistostoma / suprapubinis kateteris":{tag:"Urologija",problems:["catheter","infection","urinary","knowledge"],assessment:["Kateterio padėtis ir fiksacija.","Šlapimo tekėjimas, kiekis ir spalva.","Oda aplink įvedimo vietą.","Pratekėjimas aplink kateterį.","Temperatūra.","Paskutinio / planuojamo keitimo data."],education:["Mokyti kasdienės cistostomos priežiūros.","Paaiškinti, kaip saugoti kateterį nuo tempimo ir užlinkimo.","Aptarti planuojamo keitimo datą.","Paaiškinti, kada kreiptis dėl iškritimo ar nepratekėjimo."]},
+ "Nefrostoma":{tag:"Urologija",problems:["catheter","infection","urinary","fluid","knowledge"],assessment:["Nefrostomos vamzdelio padėtis ir fiksacija.","Šlapimo tekėjimas, kiekis ir spalva.","Įvedimo vietos oda.","Tvarsčio būklė.","Temperatūra.","Paciento / artimųjų gebėjimas prižiūrėti sistemą."],education:["Mokyti saugoti vamzdelį nuo tempimo ir užlinkimo.","Aptarti surinkimo sistemos ir įvedimo vietos priežiūrą.","Paaiškinti kontrolės / keitimo planą.","Paaiškinti, kada kreiptis dėl iškritimo ar staigaus nutekėjimo sustojimo."]},
+ "Nefrektomija / dalinė nefrektomija":{tag:"Urologija",problems:["pain","bleeding","fluid","infection","mobility","knowledge"],assessment:["Skausmas.","Gyvybiniai rodikliai.","Žaizda ir drenai, jei yra.","Diurezė ir skysčių balansas.","Pykinimas / apetitas.","Mobilumas."],education:["Aptarti žaizdos priežiūrą ir fizinio aktyvumo ribojimus.","Paaiškinti individualias skysčių vartojimo rekomendacijas.","Paaiškinti, kada kreiptis dėl karščiavimo, kraujavimo, mažėjančios diurezės ar stiprėjančio skausmo."]},
+ "Orchiektomija":{tag:"Urologija",problems:["pain","infection","bodyimage","anxiety","knowledge"],assessment:["Skausmas.","Kapšelio / operacinės srities patinimas ir hematoma.","Žaizdos būklė.","Temperatūra.","Emocinė būsena ir klausimai dėl kūno vaizdo / lytinės funkcijos."],education:["Aptarti žaizdos priežiūrą ir fizinio aktyvumo ribojimus.","Aptarti patinimo / hematomos stebėjimą.","Suteikti informaciją apie tolesnes konsultacijas ir pagalbos galimybes."]},
+ "Hidrocelės operacija":{tag:"Urologija",problems:["pain","bleeding","infection","knowledge"],assessment:["Skausmas.","Kapšelio patinimas / hematoma.","Žaizda / tvarstis.","Temperatūra.","Mobilumas."],education:["Aptarti operacinės srities priežiūrą.","Paaiškinti patinimo ir kraujavimo požymių stebėjimą.","Aptarti fizinio aktyvumo ribas pagal gydymo planą."]},
+ "Cirkumcizija / apyvarpės operacija":{tag:"Urologija",problems:["pain","bleeding","infection","knowledge"],assessment:["Skausmas.","Žaizdos būklė.","Kraujavimo požymiai.","Šlapinimasis.","Temperatūra."],education:["Aptarti žaizdos higieną ir priežiūrą.","Paaiškinti, kada kreiptis dėl kraujavimo, šlapinimosi sutrikimo ar infekcijos požymių.","Aptarti fizinio aktyvumo ir lytinių santykių ribas pagal gydytojo rekomendacijas."]}
+};
+
+const specialties = [
+ {name:"Chirurgija",icon:"CH",desc:"Pilvo, kolorektalinė, hepatobiliarinė, krūties ir endokrininė chirurgija."},
+ {name:"Urologija",icon:"UR",desc:"Onkourologija, akmenligė, prostata, drenažai ir urologinės procedūros."}
+];
+
+let specialty=null, dx=null, procedureName=null, procedure=null, selectedProblems=[], customProblems=[], outputs={plan:"",note:"",edu:""}, currentOutput="plan";
+
+function el(id){return document.getElementById(id)}
+function init(){
+ el("dxStat").textContent=diagnoses.length+" TLK grupių";
+ el("procStat").textContent=Object.keys(procedures).length+" procedūrų";
+ el("specialtyGrid").innerHTML=specialties.map(s=>{
+   const count=diagnoses.filter(d=>d.sp===s.name).length;
+   return `<div class="card specialty-card click" onclick="selectSpecialty('${s.name}')">
+     <div class="iconbox">${s.icon}</div><h3>${s.name}</h3><div class="meta">${s.desc}</div>
+     <div class="chips"><span class="chip">${count} TLK grupių</span></div></div>`;
+ }).join("");
+ updatePath();
+}
+function startFlow(){hideExtras();go(1);document.getElementById("screen1").scrollIntoView({behavior:"smooth",block:"start"})}
+function hideExtras(){el("generalModules").classList.add("hidden");el("aboutSection").classList.add("hidden");for(let i=1;i<=7;i++)el("screen"+i).classList.remove("hidden");}
+function showGeneralModules(){for(let i=1;i<=7;i++)el("screen"+i).classList.add("hidden");el("aboutSection").classList.add("hidden");el("generalModules").classList.remove("hidden");setSteps(0);updatePath("Bendrieji moduliai")}
+function showAbout(){for(let i=1;i<=7;i++)el("screen"+i).classList.add("hidden");el("generalModules").classList.add("hidden");el("aboutSection").classList.remove("hidden");setSteps(0);updatePath("Apie prototipą")}
+function goHome(){hideExtras();go(1);window.scrollTo({top:0,behavior:"smooth"})}
+function selectSpecialty(s){
+ specialty=s;dx=null;procedureName=null;procedure=null;customProblems=[];
+ el("dxSearch").value="";
+ el("dxTitle").textContent=s+" – TLK-10-AM diagnozė";
+ const groups=[...new Set(diagnoses.filter(d=>d.sp===s).map(d=>d.group))];
+ el("dxGroup").innerHTML='<option value="">Visos klinikinės grupės</option>'+groups.map(g=>`<option>${g}</option>`).join("");
+ renderDiagnoses();go(2);
+}
+function renderDiagnoses(){
+ const q=(el("dxSearch").value||"").trim().toLowerCase(), group=el("dxGroup").value;
+ const arr=diagnoses.filter(d=>d.sp===specialty && (!q||(d.code+" "+d.name+" "+d.group).toLowerCase().includes(q)) && (!group||d.group===group));
+ el("dxGrid").innerHTML=arr.length?arr.map(d=>{
+   const idx=diagnoses.indexOf(d);
+   return `<div class="card click" onclick="selectDx(${idx})"><div class="code">${d.code}</div><h3>${d.name}</h3><div class="meta">${d.group}</div><div class="chips">${d.procedures.map(p=>`<span class="chip">${p}</span>`).join("")}</div></div>`;
+ }).join(""):'<div class="card empty">Nieko nerasta. Pabandykite kitą kodą ar raktažodį.</div>';
+}
+function selectDx(i){
+ dx=diagnoses[i];
+ el("procTitle").textContent=`${dx.code} – ${dx.name}`;
+ el("procGrid").innerHTML=dx.procedures.map(p=>{
+   const mod=procedures[p];
+   return `<div class="card click" onclick='selectProcedure(${JSON.stringify(p)})'><div class="tag">${mod?.tag||dx.sp}</div><h3>${p}</h3><div class="meta">${mod?mod.problems.length:0} siūlomos slaugos problemų kryptys • ${mod?mod.assessment.length:0} vertinimo punktų</div></div>`;
+ }).join("");
+ go(3);
+}
+function selectProcedure(p){
+ procedureName=p; procedure=procedures[p]; selectedProblems=[]; customProblems=[];
+ if(!procedure){alert("Šio modulio turinys dar neparengtas.");return}
+ el("assessTitle").textContent=p+" – ką įvertinti";
+ el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
+ renderProblems();go(4);
+}
+function renderProblems(){
+ el("problemTitle").textContent=procedureName+" – slaugos problemų kryptys";
+ let html=procedure.problems.map((key,i)=>{
+   const p=problemLibrary[key];
+   return `<div class="card problem-card"><div class="checkrow"><input type="checkbox" id="pb_${i}" data-base="${i}"><label for="pb_${i}">${p.t}<div class="meta" style="font-weight:500;margin-top:4px">${p.g}</div></label></div></div>`;
+ }).join("");
+ customProblems.forEach((x,i)=>{html+=`<div class="card problem-card"><div class="checkrow"><input type="checkbox" checked data-custom="${i}" id="cp_${i}"><label for="cp_${i}">${x}<div class="meta" style="font-weight:500;margin-top:4px">Jūsų pridėta individuali problema.</div></label></div></div>`});
+ el("problemList").innerHTML=html;
+}
+function addCustomProblem(){
+ const inp=el("customProblem"),v=inp.value.trim();if(!v)return;
+ const selected=[...el("problemList").querySelectorAll("input[data-base]:checked")].map(x=>+x.dataset.base);
+ customProblems.push(v);inp.value="";renderProblems();selected.forEach(i=>{const c=el("pb_"+i);if(c)c.checked=true});
+}
+function prepareEditors(){
+ selectedProblems=[];
+ el("problemList").querySelectorAll("input:checked").forEach(cb=>{
+   if(cb.dataset.base!==undefined){
+     const key=procedure.problems[+cb.dataset.base],p=problemLibrary[key];
+     selectedProblems.push({title:p.t,goal:p.g,actions:[...p.a],evaluation:p.e});
+   }else selectedProblems.push({title:customProblems[+cb.dataset.custom],goal:"",actions:[],evaluation:""});
+ });
+ if(!selectedProblems.length){alert("Pasirinkite bent vieną slaugos problemos kryptį.");return}
+ el("editors").innerHTML=selectedProblems.map((p,i)=>`
+   <div class="card editor">
+    <div class="tag">PROBLEMA ${i+1}</div><h3>${p.title}</h3>
+    <span class="field-label">Tikslas</span><textarea id="goal_${i}">${p.goal}</textarea>
+    <span class="field-label">Siūlomi slaugos veiksmai</span>
+    ${p.actions.map((a,j)=>`<div class="actionrow"><input type="checkbox" checked id="act_${i}_${j}"><label for="act_${i}_${j}">${a}</label></div>`).join("") || '<div class="callout">Iš anksto numatytų veiksmų nėra – įrašykite savo individualius veiksmus.</div>'}
+    <span class="field-label">+ Papildomi jūsų veiksmai (po vieną eilutėje)</span><textarea id="extra_${i}" placeholder="Įrašykite savo veiksmus..."></textarea>
+    <span class="field-label">Įvertinimas / rezultatas</span><textarea id="eval_${i}">${p.evaluation}</textarea>
+   </div>`).join("");
+ el("educationList").innerHTML=procedure.education.map((e,i)=>`<div class="actionrow"><input type="checkbox" checked id="edu_${i}"><label for="edu_${i}">${e}</label></div>`).join("");
+ go(6);
+}
+function gather(){
+ const assessed=[...el("assessmentList").querySelectorAll("input:checked")].map(cb=>procedure.assessment[+cb.id.split("_")[1]]);
+ const ca=el("customAssessment").value.trim(), facts=el("patientFacts").value.trim();
+ const probs=selectedProblems.map((p,i)=>{
+   let actions=[];p.actions.forEach((a,j)=>{const cb=el(`act_${i}_${j}`);if(cb&&cb.checked)actions.push(a)});
+   const ex=el("extra_"+i).value.trim();if(ex)ex.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>actions.push(x));
+   return {title:p.title,goal:el("goal_"+i).value.trim(),actions,evaluation:el("eval_"+i).value.trim()};
+ });
+ const edu=procedure.education.filter((e,i)=>el("edu_"+i)?.checked);
+ const ee=el("extraEducation").value.trim();if(ee)ee.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>edu.push(x));
+ return {assessed,ca,facts,probs,edu};
+}
+function generateOutputs(){
+ const g=gather();
+ let plan=`NURSEPLAN LT – INDIVIDUALUS SLAUGOS PLANAS\n\nSpecialybė: ${specialty}\nTLK-10-AM: ${dx.code} – ${dx.name}\nOperacija / procedūra: ${procedureName}\n`;
+ if(g.facts)plan+=`Paciento faktai: ${g.facts}\n`;
+ if(g.assessed.length||g.ca){plan+="\nĮVERTINTA:\n";g.assessed.forEach(x=>plan+=`• ${x}\n`);if(g.ca)plan+=`• ${g.ca}\n`}
+ g.probs.forEach((p,i)=>{plan+=`\n${i+1}. Slaugos problema / kryptis: ${p.title}\nTikslas: ${p.goal||"—"}\nSlaugos veiksmai:\n`; (p.actions.length?p.actions:["—"]).forEach(a=>plan+=`• ${a}\n`);plan+=`Įvertinimas: ${p.evaluation||"—"}\n`});
+ if(g.edu.length){plan+="\nPACIENTO MOKYMAS:\n";g.edu.forEach(x=>plan+=`• ${x}\n`)}
+ plan+="\nPastaba: galutinį planą individualizuoja slaugytoja pagal realią paciento būklę ir įstaigos patvirtintą tvarką.";
+
+ let note=`${dx.code} – ${dx.name}. Operacija / procedūra: ${procedureName}. `;
+ if(g.facts)note+=g.facts.replace(/\s+/g," ").trim()+". ";
+ note+=`Pasirinktos slaugos problemų kryptys: ${g.probs.map(p=>p.title).join("; ")}. `;
+ const actions=g.probs.flatMap(p=>p.actions);if(actions.length)note+=`Slaugos veiksmai / planas: ${actions.join(" ")} `;
+ const ev=g.probs.map(p=>p.evaluation).filter(Boolean);if(ev.length)note+=`Įvertinimas: ${ev.join(" ")} `;
+ if(g.edu.length)note+=`Paciento mokymas: ${g.edu.join(" ")}`;
+ note=note.replace(/\s+/g," ").trim();
+
+ let edu=`PACIENTO MOKYMAS\n${dx.code} – ${dx.name}\n${procedureName}\n\n`;
+ if(g.edu.length)g.edu.forEach(x=>edu+=`• ${x}\n`);else edu+="—";
+
+ outputs={plan,note,edu};showOutput("plan");go(7);
+}
+function showOutput(type){
+ currentOutput=type;el("planOutput").textContent=outputs[type]||"";
+ ["Plan","Note","Edu"].forEach(x=>el("tab"+x).classList.remove("on"));
+ el(type==="plan"?"tabPlan":type==="note"?"tabNote":"tabEdu").classList.add("on");
+}
+async function copyOutput(){try{await navigator.clipboard.writeText(outputs[currentOutput]);alert("Tekstas nukopijuotas.");}catch(e){alert("Naršyklė neleido kopijuoti automatiškai.");}}
+function downloadTxt(){const b=new Blob([outputs[currentOutput]],{type:"text/plain;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=`NursePlan_LT_${currentOutput}.txt`;a.click();URL.revokeObjectURL(a.href)}
+function go(n){
+ for(let i=1;i<=7;i++){el("screen"+i).classList.toggle("hidden",i!==n)}
+ setSteps(n);updatePath();window.scrollTo({top:Math.max(0,el("hero").offsetTop+el("hero").offsetHeight-5),behavior:"smooth"});
+}
+function setSteps(n){
+ for(let i=1;i<=7;i++)el("st"+i).classList.toggle("on",i===n);
+ el("mprogress").style.width=(n?((n/7)*100):0)+"%";
+}
+function updatePath(custom){
+ if(custom){el("pathbar").innerHTML=custom;return}
+ let parts=[];if(specialty)parts.push(`<b>${specialty}</b>`);if(dx)parts.push(`${dx.code} – ${dx.name}`);if(procedureName)parts.push(`<b>${procedureName}</b>`);
+ el("pathbar").innerHTML=parts.length?parts.join(" → "):"Pradėkite nuo specialybės pasirinkimo.";
+}
+function quickStart(code,proc){
+ const d=diagnoses.find(x=>x.code===code && x.procedures.includes(proc));if(!d)return;
+ specialty=d.sp;dx=d;procedureName=proc;procedure=procedures[proc];selectedProblems=[];customProblems=[];
+ el("dxTitle").textContent=specialty+" – TLK-10-AM diagnozė";
+ el("procTitle").textContent=dx.code+" – "+dx.name;
+ el("assessTitle").textContent=proc+" – ką įvertinti";
+ el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
+ renderProblems();go(4);
+}
+function resetAll(){
+ specialty=dx=procedureName=procedure=null;selectedProblems=[];customProblems=[];outputs={plan:"",note:"",edu:""};
+ el("dxSearch").value="";el("customAssessment").value="";el("patientFacts").value="";el("extraEducation").value="";
+ go(1);
+}
+init();
 </script>
 </body>
 </html>
